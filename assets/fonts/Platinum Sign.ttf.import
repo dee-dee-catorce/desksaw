@@ -3,11 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cxn2krklp5u5c"
-valid=false
+path="res://.godot/imported/Platinum Sign.ttf-e6bb5aa2ffe052b50e71f14ac9bf3e32.fontdata"
 
 [deps]
 
 source_file="res://assets/fonts/Platinum Sign.ttf"
+dest_files=["res://.godot/imported/Platinum Sign.ttf-e6bb5aa2ffe052b50e71f14ac9bf3e32.fontdata"]
 
 [params]
 

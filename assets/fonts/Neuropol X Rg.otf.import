@@ -3,11 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cp62sgoxxnhms"
-valid=false
+path="res://.godot/imported/Neuropol X Rg.otf-20c68a3d18dbfec365850ef390b56809.fontdata"
 
 [deps]
 
 source_file="res://assets/fonts/Neuropol X Rg.otf"
+dest_files=["res://.godot/imported/Neuropol X Rg.otf-20c68a3d18dbfec365850ef390b56809.fontdata"]
 
 [params]
 

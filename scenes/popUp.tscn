@@ -61,9 +61,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
-text = "Yes.
-I know what im doing,
-spawn them expies"
+text = "Yes."
 
 [node name="NO" type="Button" parent="Main" unique_id=695481625]
 layout_mode = 1
@@ -76,8 +74,7 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "NO!
-(reset saved persistence data)"
+text = "NO!"
 
 [node name="ClickArea" type="Control" parent="." unique_id=1380769221]
 layout_mode = 1
