@@ -17,6 +17,12 @@ var _dragging := false
 var _dragger: StaticBody2D
 var _joint: DampedSpringJoint2D
 
+var _use_x11_input_regions := false
+var _input_region_id: int = 0
+var _drag_capture_region_id: int = 0
+
+const X11_INPUT_MARGIN := 3.0
+
 
 func _ready() -> void:
 	var detector := get_parent().find_child("Detector")
@@ -26,9 +32,33 @@ func _ready() -> void:
 		if gbData.devMode:
 			print("found detector")
 
+	_use_x11_input_regions = TransparentWindow.UsesInputRegions()
+
+	if _use_x11_input_regions and _foundDect:
+		_input_region_id = _dect.get_instance_id()
+		_drag_capture_region_id = get_instance_id()
+		_dect.input_pickable = true
+		_dect.mouse_entered.connect(_onEnter)
+		_dect.mouse_exited.connect(_onExit)
+		_dect.input_event.connect(_on_detector_input)
+
 
 func _process(_delta: float) -> void:
 	if not _foundDect or not _dect:
+		return
+
+	if _use_x11_input_regions:
+		_update_x11_input_regions()
+
+		if _dragging:
+			var mouse_pos := _dect.get_global_mouse_position()
+			if _dragger:
+				_dragger.global_position = mouse_pos
+
+			if not Input.is_action_pressed("click"):
+				_stopDrag()
+
+		_update_outline()
 		return
 
 	var mousePos := _dect.get_global_mouse_position()
@@ -52,10 +82,109 @@ func _process(_delta: float) -> void:
 	if _hovering and not _dragging and Input.is_action_just_pressed("click"):
 		_startDrag(mousePos)
 
+	_update_outline()
 
+
+func _update_outline() -> void:
 	var targetLine := float(outlineWidth) if (_hovering or _dragging) else 0.0
 	_currLine = lerp(_currLine, targetLine, 0.5)
 	#sprite.material.set_shader_parameter("thickness", _currLine)
+
+
+func _update_x11_input_regions() -> void:
+	TransparentWindow.SetInputRect(
+		_input_region_id,
+		_get_x11_input_rect(),
+		get_parent().is_visible_in_tree()
+	)
+
+	TransparentWindow.SetInputRect(
+		_drag_capture_region_id,
+		get_viewport().get_visible_rect(),
+		_dragging
+	)
+
+
+func _get_x11_input_rect() -> Rect2:
+	var result := Rect2()
+	var found_shape := false
+
+	for child in _dect.get_children():
+		if not (child is CollisionShape2D):
+			continue
+
+		var collision := child as CollisionShape2D
+		if collision.disabled or collision.shape == null:
+			continue
+
+		var local_rect := _shape_local_rect(collision.shape)
+		if not local_rect.has_area():
+			continue
+
+		var shape_rect := collision.global_transform * local_rect
+		if found_shape:
+			result = result.merge(shape_rect)
+		else:
+			result = shape_rect
+			found_shape = true
+
+	if found_shape:
+		return result.grow(X11_INPUT_MARGIN)
+
+	if sprite and sprite.texture:
+		return (sprite.global_transform * sprite.get_rect()).grow(X11_INPUT_MARGIN)
+
+	return Rect2(_dect.global_position - Vector2(32, 32), Vector2(64, 64))
+
+
+func _shape_local_rect(shape: Shape2D) -> Rect2:
+	if shape is RectangleShape2D:
+		var rect_shape := shape as RectangleShape2D
+		return Rect2(-rect_shape.size * 0.5, rect_shape.size)
+
+	if shape is CircleShape2D:
+		var circle := shape as CircleShape2D
+		var size := Vector2.ONE * circle.radius * 2.0
+		return Rect2(-size * 0.5, size)
+
+	if shape is CapsuleShape2D:
+		var capsule := shape as CapsuleShape2D
+		var size := Vector2(capsule.radius * 2.0, capsule.height)
+		return Rect2(-size * 0.5, size)
+
+	if shape is ConvexPolygonShape2D:
+		var polygon := shape as ConvexPolygonShape2D
+		if polygon.points.is_empty():
+			return Rect2()
+		var rect := Rect2(polygon.points[0], Vector2.ZERO)
+		for point in polygon.points:
+			rect = rect.expand(point)
+		return rect
+
+	return Rect2()
+
+
+func _on_detector_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is not InputEventMouseButton:
+		return
+
+	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not _dragging:
+		_startDrag(_dect.get_global_mouse_position())
+
+
+func _exit_tree() -> void:
+	if _hovering:
+		_setHover(false)
+
+	if is_instance_valid(_dragger):
+		_dragger.queue_free()
+	_dragging = false
+	_dragger = null
+	_joint = null
+
+	if _use_x11_input_regions:
+		TransparentWindow.RemoveInputRect(_input_region_id)
+		TransparentWindow.RemoveInputRect(_drag_capture_region_id)
 
 
 func _isMouseOver(mousePos: Vector2) -> bool:
@@ -96,6 +225,11 @@ func _startDrag(mousePos: Vector2) -> void:
 
 func _stopDrag() -> void:
 	_dragging = false
+
+	if _use_x11_input_regions:
+		TransparentWindow.RemoveInputRect(_drag_capture_region_id)
+
+		_setHover(_isMouseOver(_dect.get_global_mouse_position()))
 
 	if _dragger:
 		_dragger.queue_free()

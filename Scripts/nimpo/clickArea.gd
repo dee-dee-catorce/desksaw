@@ -17,7 +17,22 @@ class_name ClickAreaControl
 var cur: bool = false
 var contributing: bool = false
 
+var _use_x11_input_regions: bool = false
+var _input_region_id: int = 0
+
+func _ready() -> void:
+	_use_x11_input_regions = TransparentWindow.UsesInputRegions()
+	_input_region_id = get_instance_id()
+
 func _process(_delta: float) -> void:
+	if _use_x11_input_regions:
+		TransparentWindow.SetInputRect(
+			_input_region_id,
+			get_global_rect().grow(2.0),
+			enabled and is_visible_in_tree()
+		)
+		return
+
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var inside: bool = (
 		mouse_pos.x >= global_position.x and
@@ -26,6 +41,15 @@ func _process(_delta: float) -> void:
 		mouse_pos.y <= global_position.y + size.y
 	)
 	change(inside)
+
+func _exit_tree() -> void:
+	if _use_x11_input_regions:
+		TransparentWindow.RemoveInputRect(_input_region_id)
+
+	if contributing:
+		contributing = false
+		GlobalVariable.clickZoneSum -= 1
+		TransparentWindow.SetClickThrough(GlobalVariable.clickZoneSum <= 0)
 
 func change(t: bool) -> void:
 	if t == cur:

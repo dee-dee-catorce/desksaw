@@ -17,20 +17,39 @@ var _dragged_body: RigidBody2D
 var _dragger: StaticBody2D
 var _joint: PinJoint2D
 
+var _use_x11_input_regions: bool = false
+var _x11_region_bodies: Array[RigidBody2D] = []
+var _x11_region_ids: Array[int] = []
+
+# Small padding
+const X11_INPUT_MARGIN := 3.0
+const X11_INPUT_FALLBACK_HALF_SIZE := 24.0
+
 func _ready() -> void:
 	if not rigid_bodies_container:
 		push_error("there is no parent rigid body")
 		return
 
+	_use_x11_input_regions = TransparentWindow.UsesInputRegions()
+
 	#pass through every limb, then apply the signals
 	for child in rigid_bodies_container.get_children():
 		if child is RigidBody2D:
+			if _use_x11_input_regions:
+				var region_id := child.get_instance_id()
+				_x11_region_bodies.append(child)
+				_x11_region_ids.append(region_id)
+				child.tree_exiting.connect(_on_body_part_tree_exiting.bind(child, region_id))
+
 			child.input_pickable = true
 			child.mouse_entered.connect(_on_body_part_entered.bind(child))
 			child.mouse_exited.connect(_on_body_part_exited.bind(child))
 			child.input_event.connect(_on_body_part_input.bind(child))
 
 func _process(_delta: float) -> void:
+	if _use_x11_input_regions:
+		_update_x11_input_regions()
+
 	#dragging active state
 	if _dragging:
 		var mouse_pos := rigid_bodies_container.get_global_mouse_position()
@@ -43,14 +62,111 @@ func _process(_delta: float) -> void:
 			_stopDrag()
 			return
 
-	# check our cursor pos if we're hovering in transparent space
-	# since we have click through we need this else the cursor
-	# will never register as entering a limb
-	elif GlobalVariable.clickZoneSum <= 0:
-		_isMouseOver()
-	#if we are hovering, we have to make sure the cursor didn't slip off the expie
-	else:
-		_validateHoverState()
+	elif not _use_x11_input_regions:
+		# check our cursor pos if we're hovering in transparent space
+		# since we have click through we need this else the cursor
+		# will never register as entering a limb
+		if GlobalVariable.clickZoneSum <= 0:
+			_isMouseOver()
+		#if we are hovering, we have to make sure the cursor didn't slip off the expie
+		else:
+			_validateHoverState()
+
+func _update_x11_input_regions() -> void:
+	for body in _x11_region_bodies:
+		if not is_instance_valid(body):
+			continue
+
+		TransparentWindow.SetInputRect(
+			body.get_instance_id(),
+			_get_body_input_rect(body),
+			body.is_visible_in_tree()
+		)
+
+func _get_body_input_rect(body: RigidBody2D) -> Rect2:
+	var result := Rect2()
+	var found_shape := false
+
+	for child in body.get_children():
+		if not (child is CollisionShape2D):
+			continue
+
+		var collision := child as CollisionShape2D
+		if collision.disabled or collision.shape == null:
+			continue
+
+		var local_rect := _shape_local_rect(collision.shape)
+		if not local_rect.has_area():
+			continue
+
+		var shape_rect := collision.global_transform * local_rect
+		if found_shape:
+			result = result.merge(shape_rect)
+		else:
+			result = shape_rect
+			found_shape = true
+
+	if found_shape:
+		return result.grow(X11_INPUT_MARGIN)
+
+	var found_visible_sprite := false
+	for child in body.get_children():
+		if child is Sprite2D and child.is_visible_in_tree():
+			var limb_sprite := child as Sprite2D
+			if limb_sprite.texture == null:
+				continue
+
+			var sprite_rect := limb_sprite.global_transform * limb_sprite.get_rect()
+			if found_visible_sprite:
+				result = result.merge(sprite_rect)
+			else:
+				result = sprite_rect
+				found_visible_sprite = true
+
+	if found_visible_sprite:
+		return result.grow(X11_INPUT_MARGIN)
+
+	var half_size := Vector2(X11_INPUT_FALLBACK_HALF_SIZE, X11_INPUT_FALLBACK_HALF_SIZE)
+	return Rect2(body.global_position - half_size, half_size * 2.0)
+
+func _shape_local_rect(shape: Shape2D) -> Rect2:
+	if shape is RectangleShape2D:
+		var rect_shape := shape as RectangleShape2D
+		return Rect2(-rect_shape.size * 0.5, rect_shape.size)
+
+	if shape is CircleShape2D:
+		var circle := shape as CircleShape2D
+		var size := Vector2.ONE * circle.radius * 2.0
+		return Rect2(-size * 0.5, size)
+
+	if shape is CapsuleShape2D:
+		var capsule := shape as CapsuleShape2D
+		var size := Vector2(capsule.radius * 2.0, capsule.height)
+		return Rect2(-size * 0.5, size)
+
+	if shape is ConvexPolygonShape2D:
+		var polygon := shape as ConvexPolygonShape2D
+		if polygon.points.is_empty():
+			return Rect2()
+		var rect := Rect2(polygon.points[0], Vector2.ZERO)
+		for point in polygon.points:
+			rect = rect.expand(point)
+		return rect
+
+	return Rect2()
+
+func _on_body_part_tree_exiting(body: RigidBody2D, region_id: int) -> void:
+	TransparentWindow.RemoveInputRect(region_id)
+	_on_body_part_exited(body)
+
+func _exit_tree() -> void:
+	for region_id in _x11_region_ids:
+		TransparentWindow.RemoveInputRect(region_id)
+
+	if _is_contributing:
+		_is_contributing = false
+		GlobalVariable.clickZoneSum -= 1
+		TransparentWindow.SetClickThrough(GlobalVariable.clickZoneSum <= 0)
 
 ##Function that checks if the mouse is currently hovering over rigidbodies.
 func _isMouseOver() -> void:

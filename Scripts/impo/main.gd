@@ -19,8 +19,8 @@ func _ready():
 	if OS.get_name() == "Linux":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 
-	if OS.get_name() == "Linux" and OS.get_environment("XDG_SESSION_TYPE").to_lower() == "wayland":
-		OS.alert("This message is popping up because you are using wayland. \n \n Most if not all features will not work due to wayland's security measures. \n\n You will have to have another x11 app running to interact with them (ex: Steam) or switch to x11\n\n Sorry! I dont know any workarounds")
+	if OS.get_name() == "Linux" and OS.get_environment("XDG_SESSION_TYPE").to_lower() == "wayland" and not TransparentWindow.UsesInputRegions():
+		OS.alert("DeskSaw could not enable its XWayland input-region workaround. Click-through interaction may not work correctly. Make sure DeskSaw is running through X11/XWayland with the XShape extension available, or use an X11 session.")
 	
 	GlobalVariable.console.connect(yeah)
 	#fix()
