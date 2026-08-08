@@ -11,6 +11,7 @@ var settings = gbData.settings
 var sMAP = {
 	"deathBool": {"key": "invincible", "type": "toggle"},
 	"lobotomize": {"key": "lobotomize", "type": "toggle"},
+	"useVulkan": {"key": "useVulkan", "type": "toggle"},
 	"expiePersistence": {"key": "expiePersistence", "type": "toggle"},
 	"pixel": {"key": "pixel", "type": "toggle"},
 	"expieFontSize": {"key": "expieDialogueSize", "type": "text"},
@@ -148,3 +149,11 @@ func _on_audio_tab_pressed():
 	AudioTabN.button_mask = 0 # disable mouse clicks, so user cannot disable the button
 	hide_all_settings()
 	show_all_tab_type("Audio")
+
+
+
+
+func _on_use_vulkan_toggled(toggled_on: bool) -> void:
+	if toggled_on == gbData.settings.useVulkan: return
+	GlobalVariable._apply_renderer_and_restart(toggled_on)
+	pass # Replace with function body.

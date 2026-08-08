@@ -36,5 +36,29 @@ func raisemoodF(t: int):
 func feedf(t: int):
 	feed.emit(t)
 
+
+func makePopUp(text: String, parent: CanvasLayer, position: Vector2) -> bool:
+	var path = "res://scenes/popUp.tscn"
+	var scene = load(path)
+	var instance = scene.instantiate()
+	parent.add_child(instance)
+	instance.owner = parent
+	instance.position = position
+	var result: bool = await instance.setup(text)
+	return result
+
+
+func _apply_renderer_and_restart(use_vulkan: bool) -> void:
+	var method := "forward_plus" if use_vulkan else "gl_compatibility"
+	ProjectSettings.set_setting("rendering/renderer/rendering_method", method)
+	ProjectSettings.save()
+
+	OS.set_restart_on_exit(true, OS.get_cmdline_args())
+
+	gbData.settings.renderingMode = use_vulkan
+	gbData.data["firstLaunch"] = false
+	gbData.savetodisk("user://SAVE.json", gbData.data)
+	gbData.savetodisk("user://CONFIG.json", gbData.settings)
+	get_tree().quit()
 #????????????????
 var userSkinPath = "user://skin/Body/"

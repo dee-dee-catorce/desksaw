@@ -15,6 +15,7 @@
 		"dangerVal": {}
 	},
 	"nextPetId": 1.0,
+	"firstLaunch": true,
 	"everPresentAcrossSaves": {
 		"PetsKilled": 0.0
 	}

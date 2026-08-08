@@ -3,9 +3,9 @@ extends Control
 var offset = Vector2.ZERO
 var dragging = false
 var first = true
-
+signal choice_made(result: bool)
 func _ready():
-
+	self.visible = true
 	$ClickArea.enabled = self.visible
 	
 	position = Vector2i(GlobalVariable.screenWidth / 4, GlobalVariable.screenHeight / 4)
@@ -25,16 +25,13 @@ func _upDrag():
 	dragging = false
 
 
+func setup(text: String = "text") -> bool:
+	var yes: Button = $Main/YES
+	var no: Button = $Main/NO
+	$Main/RichTextLabel.text = text
 
+	yes.pressed.connect(func(): choice_made.emit(true))
+	no.pressed.connect(func(): choice_made.emit(false))
 
-func _on_yes_pressed():
-	self.visible = false
-	$ClickArea.enabled = self.visible
-	GlobalVariable.persistenceWarning.emit()
-
-func _on_no_pressed():
-	self.visible = false
-	$ClickArea.enabled = self.visible
-	gbData.data["saw"] = {}
-	gbData.addPet("Default")
-	GlobalVariable.persistenceWarning.emit()
+	var result: bool = await choice_made
+	return result

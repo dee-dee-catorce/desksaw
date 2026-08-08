@@ -262,6 +262,36 @@ text = "Keep spawned expies across loads"
 scroll_active = false
 vertical_alignment = 1
 
+[node name="useVulkan" type="Button" parent="Main/Settings/VSplitContainer/ScrollContainer/ItemList" unique_id=1249628858]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme = ExtResource("1_gicfb")
+toggle_mode = true
+icon = ExtResource("6_7udsa")
+alignment = 2
+icon_alignment = 1
+expand_icon = true
+metadata/type = "bool"
+
+[node name="name" type="RichTextLabel" parent="Main/Settings/VSplitContainer/ScrollContainer/ItemList/useVulkan" unique_id=1837024395]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.382
+anchor_top = -3.66
+anchor_right = 10.28
+anchor_bottom = -3.66
+offset_left = 526.1
+offset_top = 187.975
+offset_right = 20.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Use Vulkan rendering [color=red] 
+THIS WILL RESTART THE PROGRAM"
+scroll_active = false
+vertical_alignment = 1
+
 [node name="openAlert" type="Button" parent="Main/Settings/VSplitContainer/ScrollContainer/ItemList" unique_id=180859308]
 visible = false
 custom_minimum_size = Vector2(50, 50)
@@ -644,6 +674,8 @@ metadata/_custom_type_script = "uid://blg811jk2cjt4"
 [connection signal="pressed" from="Main/Settings/VSplitContainer/TabsScrollContainer/HBoxContainer/GeneralTab" to="Main/Settings" method="_on_general_tab_pressed"]
 [connection signal="pressed" from="Main/Settings/VSplitContainer/TabsScrollContainer/HBoxContainer/AudioTab" to="Main/Settings" method="_on_audio_tab_pressed"]
 [connection signal="pressed" from="Main/Settings/VSplitContainer/ScrollContainer/ItemList/expiePersistence" to="Main/Settings" method="_on_expie_persistence_pressed"]
+[connection signal="pressed" from="Main/Settings/VSplitContainer/ScrollContainer/ItemList/useVulkan" to="Main/Settings" method="_on_use_vulkan_pressed"]
+[connection signal="toggled" from="Main/Settings/VSplitContainer/ScrollContainer/ItemList/useVulkan" to="Main/Settings" method="_on_use_vulkan_toggled"]
 [connection signal="text_submitted" from="Main/Settings/VSplitContainer/ScrollContainer/ItemList/expieFontSize" to="Main/Settings" method="_on_expie_font_size_text_submitted"]
 [connection signal="pressed" from="Main/SkinSpawner/GridContainer/FolderAccess" to="Main/SkinSpawner" method="_on_folder_access_pressed"]
 [connection signal="pressed" from="Main/SkinSpawner/GridContainer/Refresh" to="Main/SkinSpawner" method="_on_refresh_pressed"]

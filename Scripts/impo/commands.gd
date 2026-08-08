@@ -42,10 +42,10 @@ func spawnExpie(petId: String = ""):
 	var instance = scene.instantiate()
 
 	if petId == "":
-		var skinName = GlobalVariable.userSkinPath.substr(0, len(GlobalVariable.userSkinPath) - 1) 
-		skinName = skinName.substr(skinName.rfind("/") + 1) 
+		var skinName = GlobalVariable.userSkinPath.substr(0, len(GlobalVariable.userSkinPath) - 1)
+		skinName = skinName.substr(skinName.rfind("/") + 1)
 		petId = gbData.addPet(skinName)
-	instance.get_node("behavior").petId = petId 
+	instance.get_node("behavior").petId = petId
 
 	var wrapper = Node2D.new()
 	wrapper.scale = Vector2(4.0, 4.0)
@@ -88,7 +88,7 @@ func clearObj(category: String = "object"):
 	for child in get_tree().current_scene.get_children():
 		if not exclude.has(child.name):
 			if category == child.get_meta("Category") or category == child.get_meta("itemName"):
-				if gbData.data["saw"].has(child.get_meta("itemName")): #check if deleting a pet
+				if gbData.data["saw"].has(child.get_meta("itemName")): # check if deleting a pet
 					gbData.removePet(child.get_meta("itemName"))
 				await get_tree().create_timer(.05).timeout
 				child.queue_free()
@@ -155,7 +155,7 @@ func _ready():
 	#Console.create_command("deathLoop", deathLoop, "please dont crash")
 	Console.execute("help")
 	Console.print("[color=PURPLE]You can reopen this console any time by Ctrl + Right Clicking on any Desksawian![/color]")
-	Console.execute("setMonitor 0")
+	Console.execute("setMonitor 2")
 	#setting stuff that would probably have a better solution to it
 
 

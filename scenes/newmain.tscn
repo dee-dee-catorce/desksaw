@@ -81,4 +81,4 @@ offset_bottom = -167.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PersistenceWarningPopup" parent="CanvasLayer2" unique_id=1575931891 instance=ExtResource("5_8gj0p")]
+[node name="PersistenceWarningPopup" parent="CanvasLayer2" unique_id=178805227 instance=ExtResource("5_8gj0p")]

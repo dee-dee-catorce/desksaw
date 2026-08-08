@@ -3,7 +3,6 @@
 		"x": 400.0,
 		"y": 300.0
 	},
-
 	"noNoZone": {
 		"x1": 0.0,
 		"x2": 0.0
@@ -28,7 +27,7 @@
 	"sleepEnabled": true,
 	"normalize": 1.0,
 	"outdated": false,
-	"placeHodler": true,
 	"soundVolume": 1.0,
-	"defaultSkin": "Body"
+	"defaultSkin": "Body",
+	"useVulkan": false
 }
