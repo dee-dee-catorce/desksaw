@@ -1,5 +1,5 @@
 extends Node
-
+class_name expieBehaviour
 
 """
 hey this is like 2 days before 0.2 releases
@@ -17,7 +17,7 @@ im putting this here as a reminder
 #referebces for systems to be used by this script
 @onready var faceSys = $faceHandler
 @onready var moodSys = $moodHandler
-@onready var moveSys = $movementHandler
+@onready var moveSys :expieMoveSys= $movementHandler
 @onready var sleepHandler = $sleepManager
 @onready var hungerHandler = $hungerHandler
 @onready var dialogueSys = $dialogue
@@ -86,7 +86,10 @@ var tick: float = 5.0
 enum emotionz {
 	normal, sad, sleep, tired, scared, panic, happy
 }
-var currentEmotion = emotionz.normal
+var currentEmotion = emotionz.normal:
+	set(value):
+		currentEmotion=value
+		moveSys.currentEmotion=value
 
 func _ready() -> void:
 	if petId == "":

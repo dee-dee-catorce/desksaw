@@ -1,4 +1,5 @@
 extends Node
+class_name expieMoveSys
 @export var skeleton: Skeleton2D
 @export var rigid: RigidBody2D
 @export var rigidtorso: RigidBody2D
@@ -53,7 +54,8 @@ enum states {
 	moving, idle, ragdoll, jumping, falling, resting
 }
 var currstate = states.idle
-
+##Current emotion, used to determine if expie can dance or train.
+var currentEmotion:int=expieBehaviour.emotionz.normal
 
 func _ready() -> void:
 	animplay.play("idleagain")
@@ -168,11 +170,29 @@ func initswithc(state: states):
 		states.resting:
 			print("resting")
 			self.get_parent().wander = false
-			var r = randi_range(1, 2)
 			var resttime = randi_range(120, 200)
-			animplay.play("sit" if r == 1 else "laydown")
-
-			switch_hitbox(2 if r == 1 else 3)
+			
+			const hbSit=2 ##Hitbox id sitting
+			const hbLaydown=3  ##Hitbox id laying down
+			#dancing
+			if currentEmotion==expieBehaviour.emotionz.happy and randi_range(0,2)==2:
+				var animations:Array[StringName]=[&"dance", &"DanceFG", &"DanceLC"]
+				var randAnimation:StringName=animations.pick_random()
+				animplay.play(randAnimation)
+			#training
+			elif (currentEmotion==expieBehaviour.emotionz.normal \
+			or currentEmotion==expieBehaviour.emotionz.happy) and randi_range(0,2)==2:
+				var animations:Array[StringName]=[&"TrainPlank", &"TrainPushUp", &"TrainSquats"]
+				var randAnimation:StringName=animations.pick_random()
+				animplay.play(randAnimation)
+				if randAnimation==&"TrainPlank" or randAnimation==&"TrainPushUp":
+					switch_hitbox(hbLaydown)
+			#laydown or sit
+			else:
+				var r = randi_range(1, 2)
+				animplay.play("sit" if r == 1 else "laydown")
+				switch_hitbox(hbSit if r == 1 else hbLaydown)
+			
 			await get_tree().create_timer(resttime).timeout
 			initswithc(states.idle)
 			self.get_parent().wander = true
