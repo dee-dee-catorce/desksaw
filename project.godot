@@ -32,8 +32,8 @@ gbData="*uid://cxvm0bn8psfuw"
 GlobalVariable="*uid://mxghgdpm2n4c"
 TransparentWindow="*uid://cckj4pyg78xfg"
 AudioManager="*uid://kyyjq6geettk"
-CommandsGlobal="*uid://cdrh1cuyfy75f"
 LocalizationManager="*uid://0a2b28iblnmk"
+CommandsGlobal="*uid://cdrh1cuyfy75f"
 
 [display]
 
