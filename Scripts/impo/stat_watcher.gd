@@ -39,6 +39,8 @@ func _get_translation(key : String) -> String:
 			return tr("STATS_HUNGER_TEXT")
 		"sleep":
 			return tr("STATS_SLEEP_TEXT")
+		"friendliness":
+			return tr("STATS_FRIENDLINESS_TEXT")
 		_ : 
 			return key
 

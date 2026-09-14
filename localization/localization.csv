@@ -10,17 +10,20 @@ TERMINAL_DEBUG_TAB_TITLE,Debug,Ladění
 TERMINAL_INVICIBLE_TITLE,"Invincible\n[i]Prevents death, mood loss, hunger, trust loss...[/i]","Nezranitelný\n[i]Zabraňuje smrti, ztrátě nálady, hladu, ztrátě důvěry...[/i]"
 TERMINAL_LOBOTOMY_TITLE,Enable mood,Povolit náladu
 TERMINAL_HUNGRY_TITLE,Enable hunger,Povolit hlad
+TERMINAL_YAPPING_TITLE,Enable yapping,Povolit žvanění (yapping)
 TERMINAL_SLEEPY_TITLE,Enable sleep cycles,Povolit cyklus spánku
 TERMINAL_SILENCE_TITLE,Disable ALL speech,Zakázat VEŠKEROU řeč
 TERMINAL_SILENCE_SOFT_TITLE,Disable passive speech,Zakázat pasivní řeč
 TERMINAL_MIN_DIALOGUE_TITLE,Minimum time between passive dialouge,Minimální čas mezi dialogy
 TERMINAL_MAX_DIALOGUE_TITLE,Maximum time between passive dialouge,Maximální čas mezi dialogy
+TERMINAL_SPAWN_SIZE_TITLE,New sawian spawn size,Velikost expieho při vytvoření
 TERMINAL_MASTER_VOLUME_TITLE,Master Volume,Celková hlasitost
 TERMINAL_MUTE_DIALOGUE_TITLE,Mute dialogue sounds,Ztlumit zvuky dialogů
 TERMINAL_MUTE_WHINE_TITLE,Mute whining sounds,Ztlumit kňučení
 TERMINAL_MUTE_BARK_TITLE,Mute barking sounds,Ztlumit štěkání
 TERMINAL_MUTE_PET_TITLE,Mute petting sounds,Ztlumit zvuky mazlení
 TERMINAL_MUTE_EATING_TITLE,Mute eating sounds,Ztlumit zvuky při jídle
+TERMINAL_LANGUAGE_TITLE,Language,Jazyk
 TERMINAL_DEFAULT_MONITOR_TITLE,Default monitor,Výchozí monitor
 TERMINAL_MAX_FPS_IDLE_TITLE,Max FPS: Idle,Max FPS: Nečinný
 TERMINAL_MAX_FPS_INTERACT_TITLE,Max FPS: Interacting,Max FPS: Interakce
@@ -71,3 +74,4 @@ WAYLAND_DIALOG_TITLE,"Alert!","Upozornění!"
 STATS_MOOD_TEXT,mood,nálada
 STATS_HUNGER_TEXT,hunger,hlad
 STATS_SLEEP_TEXT,sleep,spánek
+STATS_FRIENDLINESS_TEXT,friendliness,přátelskost

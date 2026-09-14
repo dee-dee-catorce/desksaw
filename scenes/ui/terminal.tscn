@@ -303,7 +303,7 @@ key = "hungerEnabled"
 
 [node name="Yap" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/BehaviorPanel/ScrollContainer/VBoxContainer" unique_id=1338715029 instance=ExtResource("5_hils5")]
 layout_mode = 2
-label = "Enable yapping"
+label = "TERMINAL_YAPPING_TITLE"
 key = "yapEnabled"
 defaultValue = true
 
@@ -336,7 +336,7 @@ defaultValue = "60.0"
 
 [node name="SpawnSize" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/BehaviorPanel/ScrollContainer/VBoxContainer" unique_id=998975074 instance=ExtResource("9_r80vr")]
 layout_mode = 2
-label = "New sawian spawn size"
+label = "TERMINAL_SPAWN_SIZE_TITLE"
 key = "spawnSize"
 defaultValue = 1.0
 sliderMinimum = 0.5
@@ -421,6 +421,7 @@ theme_override_constants/separation = -1
 
 [node name="Language" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/GeneralPanel/ScrollContainer/VBoxContainer" unique_id=107599576 instance=ExtResource("11_0qnbf")]
 layout_mode = 2
+label = "TERMINAL_LANGUAGE_TITLE"
 values = Array[String]([])
 
 [node name="Monitor" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/GeneralPanel/ScrollContainer/VBoxContainer" unique_id=27978876 instance=ExtResource("9_r80vr")]
