@@ -117,3 +117,11 @@ func loadExpiePersistence():
 		GlobalVariable.userSkinPath = "user://skin/" + petData.get("skin", "Default") + "/"
 		CommandsGlobal.spawnExpie(petId)
 		print("loaded ", petId)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_released() or event.is_echo():
+		return
+	if event.is_action(&"TemporarilyHide"):
+		visible=not visible
+		if console.visible:
+			console.visible=false
