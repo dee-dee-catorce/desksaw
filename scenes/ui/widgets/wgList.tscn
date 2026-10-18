@@ -17,9 +17,9 @@ offset_bottom = 42.0
 theme = ExtResource("1_d8pcb")
 theme_override_styles/panel = SubResource("StyleBoxFlat_o3q11")
 script = ExtResource("1_ynq7o")
-label = "Language"
+label = "TERMINAL_LANGUAGE_TITLE"
 key = "language"
-values = Array[String](["en", "cs"])
+values = Array[String]([])
 selectedValue = "en"
 defaultValue = "en"
 _optionButton = NodePath("MarginContainer/HBoxContainer/OptionButton")
@@ -39,15 +39,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/line_spacing = -8
-text = "Setting Label"
+text = "WIDGET_SETTING_LABEL"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer" unique_id=1360278518]
 layout_mode = 2
 selected = 0
-item_count = 2
-popup/item_0/text = "en"
-popup/item_0/id = 0
-popup/item_1/text = "cs"
-popup/item_1/id = 0
 
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

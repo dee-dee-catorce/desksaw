@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/LiberationSans.ttf" id="1_base"]
+[ext_resource type="FontFile" path="res://assets/fonts/unifont-17.0.04.otf" id="2_cjk"]
+
+[resource]
+base_font = ExtResource("1_base")
+fallbacks = Array[Font]([ExtResource("2_cjk")])

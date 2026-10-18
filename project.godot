@@ -26,8 +26,9 @@ buses/default_bus_layout="uid://q8b4l6lsyv7h"
 
 [autoload]
 
+LanguagePackLoader="*res://Scripts/preload/language_pack_loader.gd"
 VersionNotifier="*uid://8j1mcy0bpx3v"
-Console="*uid://dc5wc5117h2vk"
+Console="*res://addons/godot-console/scripts/console.gd"
 gbData="*uid://cxvm0bn8psfuw"
 GlobalVariable="*uid://mxghgdpm2n4c"
 TransparentWindow="*uid://cckj4pyg78xfg"
@@ -64,7 +65,7 @@ k=false
 
 [gui]
 
-theme/custom_font="uid://3iqts0pa6rby"
+theme/custom_font="res://assets/fonts/UiFontWithCJK.tres"
 
 [input]
 

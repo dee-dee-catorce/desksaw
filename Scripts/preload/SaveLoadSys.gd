@@ -239,6 +239,21 @@ func getDialogueForSkin(skinPath: String):
 			dialogueCache[skinPath] = merged
 	return merged
 
+
+## Re-read the dialogue after the language changed.
+##
+## The dialogue file is a plain resource inside the game (or inside a language
+## pack that got mounted later), so switching locale at runtime would otherwise
+## keep the lines that were loaded at startup.
+func reloadDialogue() -> void:
+	# Drop merged per-skin results: they were built from the old language.
+	dialogueCache.clear()
+	if FileAccess.file_exists(transPath):
+		text = loadjson(transPath)
+		fixMissing(text, loadjson("res://Scripts/singletons/TEMPDialogue.json"))
+	else:
+		newTrans()
+
 func savetodisk(path, dt):
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		if file:

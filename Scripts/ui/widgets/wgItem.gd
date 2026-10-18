@@ -19,7 +19,12 @@ extends PanelContainer
 
 func _refresh() -> void:
 	texRect.texture = itemIcon
-	label.text = itemName
+	# Item names come from scene file names, so route them through the
+	# translation table as ITEM_<NAME>_TEXT. If a locale has no entry the raw
+	# file name is shown, which keeps the list usable everywhere.
+	var key := "ITEM_%s_TEXT" % itemName.to_upper()
+	var translated := tr(key)
+	label.text = itemName if translated == key else translated
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():

@@ -33,7 +33,7 @@ func openskinfold():
 	OS.shell_open(ProjectSettings.globalize_path("user://skin"))
 
 func _setmood(val: float):
-	Console.warning("This command has temporarily been disabled. You can influence mood by petting them")
+	Console.warning(tr("CONSOLE_MOOD_DISABLED_MESSAGE"))
 	return val
 
 func reload():
@@ -74,7 +74,7 @@ func _additem(item: String = "containercrate"):
 	# add crate only for now
 	var path = "res://scenes/objects/" + item + ".tscn"
 	if !ResourceLoader.exists(path):
-		Console.error("No such object '" + item + "'")
+		Console.error(tr("CONSOLE_NO_SUCH_OBJECT_MESSAGE") % item)
 		return
 	var scene = load(path)
 	var instance = scene.instantiate()

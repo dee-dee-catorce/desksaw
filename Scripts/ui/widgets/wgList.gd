@@ -27,7 +27,13 @@ func _ready() -> void:
 		refresh()
 		_optionButton.item_selected.connect(_on_option_button_item_selected)
 		GlobalVariable.dataNuked.connect(_read_refresh)
-		
+
+		# Language pickers leave `values` empty so the list is built from the
+		# locales that are actually available at runtime (including any
+		# external language pack that was mounted at startup).
+		if values.is_empty():
+			values = _available_options()
+
 		set_items(values)
 
 
@@ -109,4 +115,28 @@ func set_items(items : Array[String]) -> void:
 			_optionButton.select(index)
 		
 		index = index + 1
-	
+
+
+## Options to populate an empty list widget with.
+## For the language key this is every locale the game can actually switch to.
+func _available_options() -> Array[String]:
+	var result: Array[String] = []
+	if key == "language":
+		var locales: PackedStringArray = TranslationServer.get_loaded_locales()
+		if typeof(gbData) != TYPE_NIL:
+			var known = gbData.get("availableLanguages")
+			if known != null:
+				for loc in known:
+					if not locales.has(loc):
+						locales.append(loc)
+		# keep a stable, readable order: english first, then alphabetical
+		if locales.has("en"):
+			result.append("en")
+		var rest: Array[String] = []
+		for loc in locales:
+			if loc != "en":
+				rest.append(loc)
+		rest.sort()
+		result.append_array(rest)
+	return result
+

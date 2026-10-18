@@ -83,13 +83,13 @@ theme = ExtResource("1_gicfb")
 alignment = 1
 selected = 0
 item_count = 4
-popup/item_0/text = "Console"
+popup/item_0/text = "TERMINAL_ITEMS_CONSOLE_TEXT"
 popup/item_0/id = 0
-popup/item_1/text = "Settings"
+popup/item_1/text = "TERMINAL_ITEMS_SETTINGS_TEXT"
 popup/item_1/id = 1
-popup/item_2/text = "Skins"
+popup/item_2/text = "TERMINAL_ITEMS_SKINS_TEXT"
 popup/item_2/id = 2
-popup/item_3/text = "Items"
+popup/item_3/text = "TERMINAL_ITEMS_ITEMS_TEXT"
 popup/item_3/id = 3
 metadata/_edit_use_anchors_ = true
 
@@ -642,7 +642,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="defaultSkin" type="LineEdit" parent="Main/Settings/VSplitContainer/ScrollContainer/ItemList" unique_id=1765001001]
 layout_mode = 2
-placeholder_text = "Body"
+placeholder_text = "TERMINAL_SKIN_NAME_TEXT"
 metadata/Tab = "Sys"
 
 [node name="name" type="RichTextLabel" parent="Main/Settings/VSplitContainer/ScrollContainer/ItemList/defaultSkin" unique_id=1156571291]

@@ -2890,7 +2890,7 @@ offset_left = -40.0
 offset_top = -40.0
 offset_right = 36.0
 offset_bottom = -17.0
-text = "[expie ID]"
+text = "DEBUG_EXPIE_ID_TEXT"
 horizontal_alignment = 1
 
 [node name="behavior" type="Node" parent="." unique_id=114253932 node_paths=PackedStringArray("sleepParticle")]

@@ -62,10 +62,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_wjbx6")
 theme_override_font_sizes/font_size = 14
-text = "open menu"
+text = "DEBUG_MENU_OPEN_TEXT"
 clip_text = true
 
 [node name="pet" type="Button" parent="ColorRect/HBoxContainer" unique_id=1816015925]
+text = "DEBUG_PET_TEXT"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -76,6 +77,7 @@ pet"
 clip_text = true
 
 [node name="tempFeed" type="Button" parent="ColorRect/HBoxContainer" unique_id=1823029987]
+text = "DEBUG_FEED_TEXT"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -86,6 +88,7 @@ feed button"
 clip_text = true
 
 [node name="TextEdit" type="TextEdit" parent="ColorRect/HBoxContainer" unique_id=1073561204]
+placeholder_text = "DEBUG_ITEM_PLACEHOLDER"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_wjbx6")
@@ -96,7 +99,7 @@ work yet)"
 
 [node name="Button" type="Button" parent="ColorRect/HBoxContainer" unique_id=746590826]
 layout_mode = 2
-text = "close"
+text = "DEBUG_MENU_CLOSE_TEXT"
 
 [connection signal="pressed" from="ColorRect/HBoxContainer/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/pet" to="." method="_on_pet_pressed"]
