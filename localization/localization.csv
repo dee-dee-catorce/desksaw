@@ -16,7 +16,7 @@ TERMINAL_SILENCE_TITLE,Disable ALL speech,Zakázat VEŠKEROU řeč,禁用全部�
 TERMINAL_SILENCE_SOFT_TITLE,Disable passive speech,Zakázat pasivní řeč,禁用被动说话
 TERMINAL_MIN_DIALOGUE_TITLE,Minimum time between passive dialouge,Minimální čas mezi dialogy,被动对话的最小间隔
 TERMINAL_MAX_DIALOGUE_TITLE,Maximum time between passive dialouge,Maximální čas mezi dialogy,被动对话的最大间隔
-TERMINAL_SPAWN_SIZE_TITLE,New sawian spawn size,Velikost expieho při vytvoření,新桌宠的生成大小
+TERMINAL_SPAWN_SIZE_TITLE,New sawian spawn size,Velikost expieho při vytvoření,新 Sawian 的生成大小
 TERMINAL_MASTER_VOLUME_TITLE,Master Volume,Celková hlasitost,主音量
 TERMINAL_MUTE_DIALOGUE_TITLE,Mute dialogue sounds,Ztlumit zvuky dialogů,静音对话音效
 TERMINAL_MUTE_WHINE_TITLE,Mute whining sounds,Ztlumit kňučení,静音呜咽声
@@ -27,9 +27,9 @@ TERMINAL_LANGUAGE_TITLE,Language,Jazyk,语言
 TERMINAL_DEFAULT_MONITOR_TITLE,Default monitor,Výchozí monitor,默认显示器
 TERMINAL_MAX_FPS_IDLE_TITLE,Max FPS: Idle,Max FPS: Nečinný,最大帧率：空闲
 TERMINAL_MAX_FPS_INTERACT_TITLE,Max FPS: Interacting,Max FPS: Interakce,最大帧率：交互中
-TERMINAL_PERSISTENCE_TITLE,Keep spawned expies across sessions,Zachovat vytvořené expies mezi spuštěními,跨启动保留已生成的桌宠
+TERMINAL_PERSISTENCE_TITLE,Keep spawned expies across sessions,Zachovat vytvořené expies mezi spuštěními,跨启动保留已生成的 Expie
 TERMINAL_UPDATE_NOTIF_TITLE,Update notification,Upozornění na aktualizaci,更新提示
-TERMINAL_NO_PERS_POPUP_TITLE,Disable 'too many expies!?' popup,Vypnout vyskakovací okno 'příliš mnoho expies!?',关闭'桌宠太多！？'提示
+TERMINAL_NO_PERS_POPUP_TITLE,Disable 'too many expies!?' popup,Vypnout vyskakovací okno 'příliš mnoho expies!?',关闭'太多 Expie 了！？'提示
 TERMINAL_FONT_SIZE_TITLE,Dialogue font size,Velikost písma dialogů,对话字号
 TERMINAL_PIXEL_TITLE,Enable pixel rendering,Povolit pixelové vykreslování,启用像素渲染
 TERMINAL_VULKAN_TITLE,Use Vulkan [rainbow](Doesn't work!)[/rainbow],Použít Vulkan [rainbow](Nefunguje!)[/rainbow],使用 Vulkan [rainbow]（暂时不可用！）[/rainbow]
@@ -51,8 +51,8 @@ TERMINAL_SPAWN_BTN_TEXT,Spawn,Spawn,生成
 TERMINAL_ITEMS_DISCALIMER_TEXT,[color=ED2B42]MOST IF NOT ALL ASSETS ARE RIPPED FROM\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color],"[color=ED2B42]VĚTŠINA, NE-LI VŠECHNY ASSETY, JSOU PŘEVZATY Z\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color]",[color=ED2B42]绝大部分（甚至全部）素材取自\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color]
 TERMINAL_ITEM_WIDGET_TEXT,sample item,ukázková položka,示例物品
 TERMINAL_ITEM_WIDGET_2_TEXT,another one for the road,ještě jedna na cestu,再来一个
-PERSISTENCE_WARNING_TITLE_TEXT,WARNING! TOO MANY EXPIES!?,VAROVÁNÍ! PŘÍLIŠ MNOHO EXPIES!?,警告！桌宠太多了！？
-PERSISTENCE_WARNING_MESSAGE,HOLD IT RIGHT THERE!\n\nYou have 20 (or more) Expies registered in your persistence data. Keeping these many emotionally complex creatures loaded at once could cause considerable performance issues.\n\nAre you sure you want to maintain these many?\n\n(You can disable this message in settings),"BRZDI!\n\nVe svých uložených datech máš zaregistrováno 20 (nebo více) Expies. Pokud budeš mít tolik emocionálně složitých stvoření načtených najednou, může to způsobit výrazné problémy s výkonem.\n\nOpravdu jich chceš chovat tolik?\n\n(Tuto zprávu můžeš vypnout v nastavení)",站住！\n\n你的持久化数据里登记了 20 只（或更多）桌宠。同时加载这么多情感复杂的生物，可能会造成相当严重的性能问题。\n\n你确定要养这么多吗？\n\n（此提示可在设置中关闭）
+PERSISTENCE_WARNING_TITLE_TEXT,WARNING! TOO MANY EXPIES!?,VAROVÁNÍ! PŘÍLIŠ MNOHO EXPIES!?,警告！太多 Expie 了！？
+PERSISTENCE_WARNING_MESSAGE,HOLD IT RIGHT THERE!\n\nYou have 20 (or more) Expies registered in your persistence data. Keeping these many emotionally complex creatures loaded at once could cause considerable performance issues.\n\nAre you sure you want to maintain these many?\n\n(You can disable this message in settings),"BRZDI!\n\nVe svých uložených datech máš zaregistrováno 20 (nebo více) Expies. Pokud budeš mít tolik emocionálně složitých stvoření načtených najednou, může to způsobit výrazné problémy s výkonem.\n\nOpravdu jich chceš chovat tolik?\n\n(Tuto zprávu můžeš vypnout v nastavení)",站住！\n\n你的持久化数据里登记了 20 只（或更多）Expie。同时加载这么多情感复杂的生物，可能会造成相当严重的性能问题。\n\n你确定要养这么多吗？\n\n（此提示可在设置中关闭）
 PERSISTENCE_WARNING_YES_TEXT,YES. BRING THEM IN!,ANO. DEJ JE SEM!,是，都带回来！
 PERSISTENCE_WARNING_NO_TEXT,Nah... get rid of them.,Ne...zbav se jich,算了……处理掉它们。
 FIRST_LAUNCH_MESSAGE,This is your first time launching DeskSaw!\n\nWould you like to be linked to a guide on how to use it?,Tohle je tvé první spuštění DeskSaw\n\nChceš se mrknout na návod jak jej použít?,这是你第一次启动 DeskSaw！\n\n要不要打开一份使用指南？
@@ -60,10 +60,10 @@ CONSOLE_LOG_COMMAND_DESCRIPTION,Log a string to the console,Vypíše text do kon
 CONSOLE_RESIZECONSOLE_COMMAND_DESCRIPTION,Resize the console,Změní velikost konzole,调整控制台大小
 CONSOLE_SETMONITOR_COMMAND_DESCRIPTION,Temporary command,Dočasný příkaz,临时命令
 CONSOLE_SPAWN_COMMAND_DESCRIPTION,Spawns item,Vytvoří položku,生成物品
-CONSOLE_CLEARITEMS_COMMAND_DESCRIPTION,"Clears by 'entity', 'object' or specific item name/ expie skin name","Vymaže podle 'entity', 'object' nebo konkrétního názvu položky / názvu skinu expie",按 'entity'、'object' 或具体物品名 / 桌宠皮肤名清除。
-CONSOLE_SPAWNEXPIE_COMMAND_DESCRIPTION,Spawn a Sawian based on whatever your default skin is set to,Vytvoří Sawiana podle aktuálně nastaveného výchozího skinu,按你当前设置的默认皮肤生成一只桌宠。
+CONSOLE_CLEARITEMS_COMMAND_DESCRIPTION,"Clears by 'entity', 'object' or specific item name/ expie skin name","Vymaže podle 'entity', 'object' nebo konkrétního názvu položky / názvu skinu expie",按 'entity'、'object' 或具体物品名 / Expie 皮肤名清除。
+CONSOLE_SPAWNEXPIE_COMMAND_DESCRIPTION,Spawn a Sawian based on whatever your default skin is set to,Vytvoří Sawiana podle aktuálně nastaveného výchozího skinu,按你当前设置的默认皮肤生成一只 Sawian。
 CONSOLE_NUKEDATA_COMMAND_DESCRIPTION,"Resets EVERYTHING. Save file, settings, etc. Run at your own risk","Resetuje ÚPLNĚ VŠE. Uložená data, nastavení atd. Používej na vlastní nebezpečí",重置所有内容：存档、设置等。风险自负。
-CONSOLE_DISCLAIMER_MESSAGE,"[color=PURPLE]You can reopen this console any time by Ctrl + Right Clicking on any Desksawian![/color]\nEXPIE OR ANY CHARACTERS THAT MAY BE PRESENT HERE ARE NOT MINE. THIS IS A FAN PROJECT\nIF YOU PAID FOR THIS OR GOT IT FROM SOMEWHERE NOT ON GITHUB, YOU DID IT WRONG!","[color=PURPLE]Tuto konzoli můžeš kdykoliv otevřít pomocí Ctrl + kliknutí pravým tlačítkem na libovolného Desksawiana![/color]\nEXPIE ANI ŽÁDNÉ DALŠÍ POSTAVY, KTERÉ SE ZDE MOHOU OBJEVIT, NEJSOU MOJE. TOTO JE FANOUŠKOVSKÝ PROJEKT\nPOKUD JSI ZA NĚJ ZAPLATIL NEBO JEJ ZÍSKAL ODJINUD NEŽ Z GITHUBU, UDĚLAL JSI TO ŠPATNĚ!",[color=PURPLE]随时可以按住 Ctrl 右键点击任意桌宠，重新打开这个控制台！[/color]\n桌宠（EXPIE）以及此处可能出现的任何角色都不属于我。这是一个同人项目\n如果你为它付了钱，或者从未经 GitHub 的渠道拿到它，那就是搞错了！
+CONSOLE_DISCLAIMER_MESSAGE,"[color=PURPLE]You can reopen this console any time by Ctrl + Right Clicking on any Desksawian![/color]\nEXPIE OR ANY CHARACTERS THAT MAY BE PRESENT HERE ARE NOT MINE. THIS IS A FAN PROJECT\nIF YOU PAID FOR THIS OR GOT IT FROM SOMEWHERE NOT ON GITHUB, YOU DID IT WRONG!","[color=PURPLE]Tuto konzoli můžeš kdykoliv otevřít pomocí Ctrl + kliknutí pravým tlačítkem na libovolného Desksawiana![/color]\nEXPIE ANI ŽÁDNÉ DALŠÍ POSTAVY, KTERÉ SE ZDE MOHOU OBJEVIT, NEJSOU MOJE. TOTO JE FANOUŠKOVSKÝ PROJEKT\nPOKUD JSI ZA NĚJ ZAPLATIL NEBO JEJ ZÍSKAL ODJINUD NEŽ Z GITHUBU, UDĚLAL JSI TO ŠPATNĚ!",[color=PURPLE]随时可以按住 Ctrl 右键点击任意 Desksawian，重新打开这个控制台！[/color]\nEXPIE 以及此处可能出现的任何角色都不属于我。这是一个同人项目\n如果你为它付了钱，或者从未经 GitHub 的渠道拿到它，那就是搞错了！
 CONSOLE_RESIZING_WARNING_MESSAGE,Resizing the console to this size is not recommended!,Zmenšení okna konzole na takovouto velikost není doporučena!,不建议把控制台调整到这个尺寸！
 CONSOLE_RESIZE_OVERRIDE_MESSAGE,Type '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' if you are sure,Použijte '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' pokud jste si jisti,如果你确定，请输入 '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]'
 CONSOLE_RESIZE_NOTE,[color=gray]NOTE: console size will NOT be saved if forced![/color],[color=gray]POZNÁMKA: velikost konzole NEBUDE uložena pokud bude vynucena parametrem force![/color],[color=gray]注意：强制调整后控制台尺寸不会被保存！[/color]
@@ -85,7 +85,7 @@ DEBUG_MENU_CLOSE_TEXT,close,zavřít,关闭
 DEBUG_PET_TEXT,temporary\npet,dočasné\nmazlení,临时\n抚摸
 DEBUG_FEED_TEXT,temporary\nfeed button,dočasné\nkrmení,临时\n投喂按钮
 DEBUG_ITEM_PLACEHOLDER,item\n (doesnt \nwork yet),položka\n (zatím \nnefunguje),物品\n（还\n不能用）
-DEBUG_EXPIE_ID_TEXT,[expie ID],[ID expie],[桌宠 ID]
+DEBUG_EXPIE_ID_TEXT,[expie ID],[ID expie],[Expie ID]
 ITEM_BREAD_TEXT,Bread,Chléb,面包
 ITEM_CONTAINERCRATE_TEXT,Crate,Bedna,木箱
 ITEM_GEOFRUIT_TEXT,Geo Fruit,Geo ovoce,地果
