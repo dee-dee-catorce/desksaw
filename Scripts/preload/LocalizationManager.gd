@@ -24,3 +24,21 @@ func _init_language() -> void:
 
 func _update_language() -> void:
 	TranslationServer.set_locale(gbData.settings.language)
+	gbData.availableLanguages = TranslationServer.get_loaded_locales()
+
+
+## test
+func addlang() -> void:
+		var path: String = await GlobalVariable.pickFolder()
+
+		if path.is_empty():
+			return
+
+		var translation = ResourceLoader.load(path) as Translation
+
+		if translation == null:
+			push_error("Failed to load translation file: " + path)
+			return
+
+		TranslationServer.add_translation(translation)
+		_update_language()

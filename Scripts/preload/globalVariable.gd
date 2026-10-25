@@ -113,6 +113,23 @@ func checkpositive(num):
 	return false
 
 
+func pickFolder():
+	var dialog = FileDialog.new()
+	dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.use_native_dialog = true
+
+	dialog.add_filter("*.translation ; Godot Translation File")
+
+	add_child(dialog)
+	dialog.popup_file_dialog()
+
+	var path = await dialog.file_selected
+	dialog.queue_free()
+
+	return path
+
+
 func _process(_d: float) -> void:
 	if Input.is_action_just_pressed("Open Terminal"):
 		TerminalOpenPressed.emit(true)

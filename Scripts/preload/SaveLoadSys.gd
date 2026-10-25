@@ -27,9 +27,11 @@ var devMode = false
 #but im too  in too deep to go back now
 
 const savePath = "user://SAVE.json"
-const transPath = "user://TRANSLATION.json"
+const dialoguePath = "user://DIALOGUEDEFAULT.json"
 const conPath = "user://CONFIG.json"
 const skinfilepath = "user://skin"
+
+const sysTranslation = "user://translations"
 
 
 func _ready():
@@ -47,12 +49,12 @@ func _ready():
 	else:
 		newsave()
 	
-	# Load translation file
-	if FileAccess.file_exists(transPath):
-		text = loadjson(transPath)
-		fixMissing(text, loadjson("res://Scripts/singletons/TEMPDialogue.json"))
+	# Load dialogue file
+	if FileAccess.file_exists(dialoguePath):
+		text = loadjson(dialoguePath)
+		fixMissing(text, loadjson("res://Scripts/singletons/DefaultDialogue.json"))
 	else:
-		newTrans()
+		newDialogue()
 
 	# Load settings/config file
 	if FileAccess.file_exists(conPath):
@@ -67,15 +69,12 @@ func _ready():
 		newSkinFile()
 
 
-
-
 	InitAutosave()
 
 #this bug fuxking sucks so im removing it once and for all
 #automatically detect if the user is missing a setting or something related to that
 #should fix the shocked face bug PERMANANTLY
 func fixMissing(base: Dictionary, default: Dictionary):
-
 	for key in default.keys():
 		if not base.has(key):
 			if typeof(default[key]) == TYPE_DICTIONARY:
@@ -121,9 +120,9 @@ func addPet(skin: String = "Default") -> String:
 	data["saw"][newId] = data["sawTemplate"].duplicate(true)
 	data["saw"][newId]["skin"] = skin
 	if gbData.settings.has("spawnSize"):
-		data["saw"][newId]["spawnSize"]=gbData.settings["spawnSize"]
+		data["saw"][newId]["spawnSize"] = gbData.settings["spawnSize"]
 	else:
-		data["saw"][newId]["spawnSize"]=1.0
+		data["saw"][newId]["spawnSize"] = 1.0
 	
 	savetodisk(savePath, data)
 	return newId
@@ -136,12 +135,12 @@ func removePet(id: String) -> void:
 	data["everPresentAcrossSaves"]["PetsKilled"] += 1
 	savetodisk(savePath, data)
 
-func newTrans():
+func newDialogue():
 	#fix this later make it bassdfjogsdjfoigjsdfgjosdifgjiosdfjg nvm its good as it
 	var defaultTrans = "res://Scripts/singletons/TEMPDialogue.json"
 	
 	text = loadjson(defaultTrans).duplicate(true)
-	savetodisk(transPath, text)
+	savetodisk(dialoguePath, text)
 
 func newConfig():
 	var configFile = "res://Scripts/singletons/config.json"
@@ -230,7 +229,7 @@ func getDialogueForSkin(skinPath: String):
 	if dialogueCache.has(skinPath):
 		return dialogueCache[skinPath]
 	var merged = text.diaGlobal.duplicate(true)
-	var skinFile = skinPath + "TRANSLATION.json"
+	var skinFile = skinPath + "CUSTOM-DIALOGUE.json"
 	if FileAccess.file_exists(skinFile):
 		var skinText = loadjson(skinFile)
 		if skinText is Dictionary and skinText.get("diaGlobal") is Dictionary:
@@ -259,7 +258,7 @@ func InitAutosave():
 
 func killEverything():
 	newsave()
-	newTrans()
+	newDialogue()
 	newSkinFile()
 	newConfig()
 
@@ -281,4 +280,4 @@ signal SettingsChanged()
 # used for getting settings in csharp scripts
 # let me know if there's a better way to do this
 func GetSetting(key: String, default):
-	return settings.get(key, default) 
+	return settings.get(key, default)

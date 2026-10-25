@@ -1,6 +1,6 @@
 extends Node
 @onready
-var VERSION = "0.3.0"
+var VERSION = "0.3.1"
 const RELEASES = "https://api.github.com/repos/dee-dee-catorce/deskpublic/releases"
 
 var http: HTTPRequest

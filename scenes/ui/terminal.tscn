@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://divfv87tysima" path="res://scenes/ui/widgets/wgList.tscn" id="11_0qnbf"]
 [ext_resource type="Script" uid="uid://ufqkwiq81vuc" path="res://Scripts/ui/generalSettingsPanel.gd" id="11_uyiol"]
 [ext_resource type="PackedScene" uid="uid://bjaud4bo61wh3" path="res://scenes/ui/widgets/wgInput.tscn" id="12_qw8t2"]
+[ext_resource type="Script" uid="uid://espnb4yif1un" path="res://Scripts/ui/buttons/btnOpenLocale.gd" id="13_uyiol"]
+[ext_resource type="Script" uid="uid://c2f5p80bmrif8" path="res://Scripts/ui/buttons/btnTransGender.gd" id="14_lq2yf"]
 [ext_resource type="Script" uid="uid://8lhbbrprbbpc" path="res://Scripts/ui/terminal/itemsView.gd" id="15_0e1f5"]
 [ext_resource type="PackedScene" uid="uid://ci0xelx1tte0f" path="res://scenes/ui/widgets/wgItem.tscn" id="15_r80vr"]
 [ext_resource type="Texture2D" uid="uid://btgnk8vpemq7w" path="res://assets/objectSpr/Site-logo.png" id="17_1d1gl"]
@@ -423,6 +425,22 @@ theme_override_constants/separation = -1
 layout_mode = 2
 label = "TERMINAL_LANGUAGE_TITLE"
 values = Array[String]([])
+
+[node name="OpenRepo" type="Button" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/GeneralPanel/ScrollContainer/VBoxContainer" unique_id=1827927619]
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+text = "TERMINAL_OPEN_LOCALE_REPO"
+autowrap_mode = 3
+script = ExtResource("13_uyiol")
+
+[node name="AddTrans" type="Button" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/GeneralPanel/ScrollContainer/VBoxContainer" unique_id=1039688655]
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+text = "TERMINAL_ADD_TRANSLATION"
+autowrap_mode = 3
+script = ExtResource("14_lq2yf")
 
 [node name="Monitor" parent="MarginContainer/ViewportPanel/SettingsView/MarginContainer/VBoxContainer/SettingsPanel/MarginContainer/GeneralPanel/ScrollContainer/VBoxContainer" unique_id=27978876 instance=ExtResource("9_r80vr")]
 layout_mode = 2
