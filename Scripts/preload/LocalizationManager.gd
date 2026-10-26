@@ -7,11 +7,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _init_language() -> void:
 	if !gbData.settings.has("language"):
 		gbData.settings["language"] = "en"
@@ -28,17 +23,35 @@ func _update_language() -> void:
 
 
 ## test
+
 func addlang() -> void:
-		var path: String = await GlobalVariable.pickFolder()
+	var path: String = await GlobalVariable.pickFolder()
+	var file_name := path.get_file()
+	var destination := gbData.sysTranslation.path_join(file_name)
 
-		if path.is_empty():
-			return
+	if path.is_empty():
+		return
 
-		var translation = ResourceLoader.load(path) as Translation
+	var err := DirAccess.make_dir_recursive_absolute(
+		ProjectSettings.globalize_path(gbData.sysTranslation)
+		)
+	if err != OK and err != ERR_ALREADY_EXISTS:
+		return
+	err = DirAccess.copy_absolute(
+		path,
+		ProjectSettings.globalize_path(destination)
+	)
+		#3
 
-		if translation == null:
-			push_error("Failed to load translation file: " + path)
-			return
+	var translation := ResourceLoader.load(destination) as Translation
 
-		TranslationServer.add_translation(translation)
-		_update_language()
+	if translation == null:
+		push_error("Failed to load translation: " + destination)
+		return
+
+	TranslationServer.add_translation(translation)
+
+		#gbData.settings["language"] = translation.locale
+	gbData.savetodisk(gbData.conPath, gbData.settings)
+	gbData.availableLanguages = TranslationServer.get_loaded_locales()
+	_update_language()

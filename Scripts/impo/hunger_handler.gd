@@ -43,7 +43,7 @@ func _onItemEnter(body: Node2D) -> void:
 		return
 	if foodDb == true:
 		return
-	if get_parent().isSleeping or get_parent().shocked:
+	if get_parent().isSleeping or get_parent().shocked or get_parent().ragdolled:
 		return
 	if not body.has_node("properties"):
 		return

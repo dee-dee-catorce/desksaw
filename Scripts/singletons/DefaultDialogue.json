@@ -154,6 +154,16 @@
 			"Um... hey!",
 			"Hey! Over here!"
 		],
+		"yapReject": [
+			"[shake]I don't want to talk!",
+			"[shake]Leave me alone!",
+			"[shake]Go away!"
+		],
+		"yapRejectResponse": [
+			"... Ok?",
+			"... ?",
+			"Oh, alright..."
+		],
 		"yapResponse": [
 			"[wave]Oh hey there!",
 			"[wave]Oh, you talking to me?",
@@ -185,8 +195,11 @@
 			"...? Where did you go?",
 			"Hey, wait!",
 			"Ugh... they just left.",
-			"Hello? ...",
-			"Guess I'm on my own now..."
+			"Hello? ..."
+		],
+		"yapInterruptHard": [
+			"Oh!",
+			"Woah!"
 		]
 	}
 }

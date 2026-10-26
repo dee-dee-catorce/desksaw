@@ -1,7 +1,7 @@
 keys,en,cs
 TERMINAL_ITEMS_CONSOLE_TEXT,Console,Konzole
-TERMINAL_ADD_TRANSLATION,add translation, idk i dont know czech
-TERMINAL_OPEN_LOCALE_REPO,Open [color=blue]locale repo, idk i dont know czech
+TERMINAL_ADD_TRANSLATION,Add a .translation file,idk i dont know czech
+TERMINAL_OPEN_LOCALE_REPO,Open locale GitHub,idk i dont know czech
 TERMINAL_ITEMS_SETTINGS_TEXT,Settings,Nastavení
 TERMINAL_ITEMS_SKINS_TEXT,Skins,Skiny
 TERMINAL_ITEMS_ITEMS_TEXT,Items,Předměty
@@ -34,27 +34,27 @@ TERMINAL_UPDATE_NOTIF_TITLE,Update notification,Upozornění na aktualizaci
 TERMINAL_NO_PERS_POPUP_TITLE,Disable 'too many expies!?' popup,Vypnout vyskakovací okno 'příliš mnoho expies!?'
 TERMINAL_FONT_SIZE_TITLE,Dialogue font size,Velikost písma dialogů
 TERMINAL_PIXEL_TITLE,Enable pixel rendering,Povolit pixelové vykreslování
-TERMINAL_VULKAN_TITLE,"Use Vulkan [rainbow](Doesn't work!)[/rainbow]",Použít Vulkan [rainbow](Nefunguje!)[/rainbow]
+TERMINAL_VULKAN_TITLE,Use Vulkan [rainbow](Doesn't work!)[/rainbow],Použít Vulkan [rainbow](Nefunguje!)[/rainbow]
 TERMINAL_OPEN_FOLDER_TEXT,Open save data folder,Otevřít složku s uloženými daty
 TERMINAL_QUIT_TEXT,Close Application,Zavřít aplikaci
-TERMINAL_DEBUG_WARNING_TEXT,"Hello! You shouldn't mess with these ones [i]unless you know what you're doing.[/i]","Ahoj! S těmito nastaveními by sis neměl hrát [i]pokud nevíš, co děláš.[/i]"
+TERMINAL_DEBUG_WARNING_TEXT,Hello! You shouldn't mess with these ones [i]unless you know what you're doing.[/i],"Ahoj! S těmito nastaveními by sis neměl hrát [i]pokud nevíš, co děláš.[/i]"
 TERMINAL_SKIN_NAME_LABEL,Default skin folder name,Výchozí název složky se skinem
 TERMINAL_MOOD_MIN_LABEL,Minimum mood,Minimální nálada
 TERMINAL_MOOD_MAX_LABEL,Maximum mood,Maximální nálada
-TERMINAL_HUNGER_RATE_LABEL,"Hunger rate\n[rainbow](Currenly unused)[/rainbow]","Rychlost hladovění\n[rainbow](Momentálně nepoužíváno)[/rainbow]"
-TERMINAL_DISCLAIMER_LABEL,"Toggle disclaimer at bootup\n[i]No longer used[/i]","Zobrazit upozornění při spuštění\n[i]Již se nepoužívá[/i]"
+TERMINAL_HUNGER_RATE_LABEL,Hunger rate\n[rainbow](Currenly unused)[/rainbow],Rychlost hladovění\n[rainbow](Momentálně nepoužíváno)[/rainbow]
+TERMINAL_DISCLAIMER_LABEL,Toggle disclaimer at bootup\n[i]No longer used[/i],Zobrazit upozornění při spuštění\n[i]Již se nepoužívá[/i]
 TERMINAL_NORMALIZE_LABEL,Normalize,Normalizovat
 TERMINAL_USE_VULKAN_LABEL,Use Vulkan Rendering [color=red][wave] (REQUIRES RESTART),Použít vykreslování přes Vulkan [color=red][wave] (VYŽADUJE RESTART)
-TERMINAL_DEFAULT_SKIN_BTN_TEXT,Experiment (Default),Experiment (Výchozí),
+TERMINAL_DEFAULT_SKIN_BTN_TEXT,Experiment (Default),Experiment (Výchozí)
 TERMINAL_SKIN_FOLDER_TEXT,Open skins folder,Otevřít složku se skiny
 TERMINAL_SKIN_DB_TEXT,Skins Database,Databáze skinů
-TERMINAL_SKIN_NAME_TEXT,Skin Name, Název skinu
+TERMINAL_SKIN_NAME_TEXT,Skin Name,Název skinu
 TERMINAL_SPAWN_BTN_TEXT,Spawn,Spawn
-TERMINAL_ITEMS_DISCALIMER_TEXT,"[color=ED2B42]MOST IF NOT ALL ASSETS ARE RIPPED FROM\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color]","[color=ED2B42]VĚTŠINA, NE-LI VŠECHNY ASSETY, JSOU PŘEVZATY Z\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color]"
+TERMINAL_ITEMS_DISCALIMER_TEXT,[color=ED2B42]MOST IF NOT ALL ASSETS ARE RIPPED FROM\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color],"[color=ED2B42]VĚTŠINA, NE-LI VŠECHNY ASSETY, JSOU PŘEVZATY Z\n[color=2BEDD6]https://casualtiesunknown.miraheze.org/wiki/[/color]"
 TERMINAL_ITEM_WIDGET_TEXT,sample item,ukázková položka
 TERMINAL_ITEM_WIDGET_2_TEXT,another one for the road,ještě jedna na cestu
 PERSISTENCE_WARNING_TITLE_TEXT,WARNING! TOO MANY EXPIES!?,VAROVÁNÍ! PŘÍLIŠ MNOHO EXPIES!?
-PERSISTENCE_WARNING_MESSAGE,"HOLD IT RIGHT THERE!\n\nYou have 20 (or more) Expies registered in your persistence data. Keeping these many emotionally complex creatures loaded at once could cause considerable performance issues.\n\nAre you sure you want to maintain these many?\n\n(You can disable this message in settings)","BRZDI!\n\nVe svých uložených datech máš zaregistrováno 20 (nebo více) Expies. Pokud budeš mít tolik emocionálně složitých stvoření načtených najednou, může to způsobit výrazné problémy s výkonem.\n\nOpravdu jich chceš chovat tolik?\n\n(Tuto zprávu můžeš vypnout v nastavení)"
+PERSISTENCE_WARNING_MESSAGE,HOLD IT RIGHT THERE!\n\nYou have 20 (or more) Expies registered in your persistence data. Keeping these many emotionally complex creatures loaded at once could cause considerable performance issues.\n\nAre you sure you want to maintain these many?\n\n(You can disable this message in settings),"BRZDI!\n\nVe svých uložených datech máš zaregistrováno 20 (nebo více) Expies. Pokud budeš mít tolik emocionálně složitých stvoření načtených najednou, může to způsobit výrazné problémy s výkonem.\n\nOpravdu jich chceš chovat tolik?\n\n(Tuto zprávu můžeš vypnout v nastavení)"
 PERSISTENCE_WARNING_YES_TEXT,YES. BRING THEM IN!,ANO. DEJ JE SEM!
 PERSISTENCE_WARNING_NO_TEXT,Nah... get rid of them.,Ne...zbav se jich
 FIRST_LAUNCH_MESSAGE,This is your first time launching DeskSaw!\n\nWould you like to be linked to a guide on how to use it?,Tohle je tvé první spuštění DeskSaw\n\nChceš se mrknout na návod jak jej použít?
@@ -67,12 +67,12 @@ CONSOLE_SPAWNEXPIE_COMMAND_DESCRIPTION,Spawn a Sawian based on whatever your def
 CONSOLE_NUKEDATA_COMMAND_DESCRIPTION,"Resets EVERYTHING. Save file, settings, etc. Run at your own risk","Resetuje ÚPLNĚ VŠE. Uložená data, nastavení atd. Používej na vlastní nebezpečí"
 CONSOLE_DISCLAIMER_MESSAGE,"[color=PURPLE]You can reopen this console any time by Ctrl + Right Clicking on any Desksawian![/color]\nEXPIE OR ANY CHARACTERS THAT MAY BE PRESENT HERE ARE NOT MINE. THIS IS A FAN PROJECT\nIF YOU PAID FOR THIS OR GOT IT FROM SOMEWHERE NOT ON GITHUB, YOU DID IT WRONG!","[color=PURPLE]Tuto konzoli můžeš kdykoliv otevřít pomocí Ctrl + kliknutí pravým tlačítkem na libovolného Desksawiana![/color]\nEXPIE ANI ŽÁDNÉ DALŠÍ POSTAVY, KTERÉ SE ZDE MOHOU OBJEVIT, NEJSOU MOJE. TOTO JE FANOUŠKOVSKÝ PROJEKT\nPOKUD JSI ZA NĚJ ZAPLATIL NEBO JEJ ZÍSKAL ODJINUD NEŽ Z GITHUBU, UDĚLAL JSI TO ŠPATNĚ!"
 CONSOLE_RESIZING_WARNING_MESSAGE,Resizing the console to this size is not recommended!,Zmenšení okna konzole na takovouto velikost není doporučena!
-CONSOLE_RESIZE_OVERRIDE_MESSAGE,"Type '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' if you are sure","Použijte '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' pokud jste si jisti"
+CONSOLE_RESIZE_OVERRIDE_MESSAGE,Type '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' if you are sure,Použijte '[url=resizeConsole {0} {1} force]resizeConsole {0} {1} force[/url]' pokud jste si jisti
 CONSOLE_RESIZE_NOTE,[color=gray]NOTE: console size will NOT be saved if forced![/color],[color=gray]POZNÁMKA: velikost konzole NEBUDE uložena pokud bude vynucena parametrem force![/color]
-VERSION_DIALOG_MESSAGE,"You're using an outdated version of DeskSaw.\n\n\tLatest: %s (https://github.com/dee-dee-catorce/desksaw)\n\tCurrent: %s\n\nYou can disable this popup in settings.","Používáš zastaralou verzi DeskSaw.\n\n\tNejnovější: %s\n\tAktuální: %s (https://github.com/dee-dee-catorce/desksaw)\n\nToto vyskakovací okno můžeš vypnout v nastavení."
-VERSION_DIALOG_TITLE,"New version available!","Dostupná novější verze!"
+VERSION_DIALOG_MESSAGE,You're using an outdated version of DeskSaw.\n\n\tLatest: %s (https://github.com/dee-dee-catorce/desksaw)\n\tCurrent: %s\n\nYou can disable this popup in settings.,Používáš zastaralou verzi DeskSaw.\n\n\tNejnovější: %s\n\tAktuální: %s (https://github.com/dee-dee-catorce/desksaw)\n\nToto vyskakovací okno můžeš vypnout v nastavení.
+VERSION_DIALOG_TITLE,New version available!,Dostupná novější verze!
 WAYLAND_DIALOG_MESSAGE,"DeskSaw could not enable its XWayland input-region workaround. Click-through interaction may not work correctly. Make sure DeskSaw is running through X11/XWayland with the XShape extension available, or use an X11 session.","DeskSaw nemohl aktivovat potřebné řešení pro klikání skrz okno v XWaylandu. Tato funkce proto nemusí fungovat správně. Ujisti se, že DeskSaw běží přes X11/XWayland a že je dostupné rozšíření XShape, případně použij relaci X11."
-WAYLAND_DIALOG_TITLE,"Alert!","Upozornění!"
+WAYLAND_DIALOG_TITLE,Alert!,Upozornění!
 STATS_MOOD_TEXT,mood,nálada
 STATS_HUNGER_TEXT,hunger,hlad
 STATS_SLEEP_TEXT,sleep,spánek

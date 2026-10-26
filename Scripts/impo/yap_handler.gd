@@ -1,6 +1,10 @@
 extends Node
 #yap stuff. expies call each other, yap for a bit, then split.
 
+
+# dd here im trying to read this to the best of my ability and im having trouble
+
+#ill add onto it ina  bit ;)
 var callRange := 500.0
 var interactCooldown := 80.0
 var turnPauseMin := 0.1
@@ -140,6 +144,12 @@ func _calltick():
 
 #someone called us, decide whether to pick up
 func callReceived(caller):
+	if (get_parent().moodSys.mood < -50.0):
+		caller.get_node("yapHandler").callRejected()
+		var pool = get_parent().dialogueSys.data.get("yapReject", [])
+		if not pool.is_empty():
+			get_parent().dialogueSys.setDia(pool.pick_random(), 1.0, 0, true)
+		return
 	if state != yapstates.idle:
 		caller.get_node("yapHandler").callRejected()
 		return
@@ -165,7 +175,13 @@ func callAccepted(responder):
 
 func callRejected():
 	if state == yapstates.calling:
-		_abort(true)
+		# mogged
+		await get_tree().create_timer(.5).timeout
+		_startSplit(partner)
+		var pool = get_parent().dialogueSys.data.get("yapRejectResponse", [])
+		if not pool.is_empty():
+			get_parent().dialogueSys.setDia(pool.pick_random(), 1.0, 0, true)
+		_abort(false)
 
 func _respondtick():
 	if not _isAvailable(get_parent()):
@@ -351,7 +367,7 @@ func yapEnding(other):
 	if state == yapstates.progressing and partner == other:
 		finishing = true
 
-func _startSplit(other):
+func _startSplit(other, cdtime:float = 0.5):
 	var b = get_parent()
 	var dirx = sign(b.moveSys.rigid.global_position.x - other.moveSys.rigid.global_position.x)
 	if dirx == 0:
@@ -362,7 +378,7 @@ func _startSplit(other):
 	state = yapstates.splitting
 	walkDir = dirx
 	walkFaceDir = faceDir
-	timer = randf_range(0.5, 2.0)
+	timer = randf_range(cdtime, cdtime*4.0)
 	b.attention = null
 	b.wander = false
 	b.moveSys.dir = dirx

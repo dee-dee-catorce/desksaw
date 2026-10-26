@@ -2,14 +2,7 @@ extends Node
 
 
 """
-hey this is like 2 days before 0.2 releases
-
-most of this script is 2014 toby fox level bullshit
-
-and i need to recode it asap
-
-
-im putting this here as a reminder
+no
 
 """
 
