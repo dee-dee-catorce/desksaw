@@ -75,6 +75,49 @@ func typeOut(string: String, speed_multiplier: float = 1.0):
 	if tre == h:
 		richtextlabel.visible_characters = 0
 
+
+func send(cooldown: float = 0.0, ignoreCooldown: bool = true) -> void:
+	if (not dialogueTimer.is_stopped() or isTyping) and not ignoreCooldown:
+		#print("THE EXPIE IS OVERSTIMULATED HE WON'T TALK")
+		return
+	if self.get_parent().isSleeping:
+		print("sleeping")
+		return
+	if pool.size() > 0:
+		var text: String = pool.pick_random()
+		var effectiveSpeed = speedMod
+
+		if text.find("[stupid]") != -1:
+			text = text.replace("[stupid]", "")
+			text = stupify(text)
+			effectiveSpeed -= .3
+
+		typeOut(text, effectiveSpeed)
+
+		await stoptalking
+
+		if cooldown > 0.0:
+			dialogueTimer.start(cooldown)
+
+
+func setDia(stra: String, speed: float, cooldown: float = 0.0, ignoreCooldown: bool = true) -> void:
+	if (not dialogueTimer.is_stopped() or isTyping) and not ignoreCooldown:
+		#print("THE EXPIE IS OVERSTIMULATED HE WON'T TALK")
+		return
+
+	typeOut(stra, speed)
+	await stoptalking
+
+	if cooldown > 0.0:
+		dialogueTimer.start(cooldown)
+
+func is_dialogue_playing() -> bool:
+	return isTyping
+
+func is_dialogue_visible() -> bool:
+	return isTyping or richtextlabel.visible_characters > 0
+
+
 func stupify(input: String) -> String:
 	var chance = .2
 	var rng = RandomNumberGenerator.new()
@@ -125,44 +168,3 @@ func stupify(input: String) -> String:
 			result += " "
 
 	return result
-
-func send(cooldown: float = 0.0, ignoreCooldown: bool = true) -> void:
-	if (not dialogueTimer.is_stopped() or isTyping) and not ignoreCooldown:
-		print("THE EXPIE IS OVERSTIMULATED HE WON'T TALK")
-		return
-	if self.get_parent().isSleeping:
-		print("sleeping")
-		return
-	if pool.size() > 0:
-		var text: String = pool.pick_random()
-		var effectiveSpeed = speedMod
-
-		if text.find("[stupid]") != -1:
-			text = text.replace("[stupid]", "")
-			text = stupify(text)
-			effectiveSpeed -= .3
-
-		typeOut(text, effectiveSpeed)
-
-		await stoptalking
-
-		if cooldown > 0.0:
-			dialogueTimer.start(cooldown)
-
-
-func setDia(stra: String, speed: float, cooldown: float = 0.0, ignoreCooldown: bool = true) -> void:
-	if (not dialogueTimer.is_stopped() or isTyping) and not ignoreCooldown:
-		print("THE EXPIE IS OVERSTIMULATED HE WON'T TALK")
-		return
-
-	typeOut(stra, speed)
-	await stoptalking
-
-	if cooldown > 0.0:
-		dialogueTimer.start(cooldown)
-
-func is_dialogue_playing() -> bool:
-	return isTyping
-
-func is_dialogue_visible() -> bool:
-	return isTyping or richtextlabel.visible_characters > 0

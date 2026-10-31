@@ -17,7 +17,7 @@ var eyes = {
 	"sad": {"open": "experimentEyeSad.png", "closed": "experimentEyeClosed.png", "back": "experimentEyeSadBack.png"},
 	"sleep": {"open": "experimentEyeClosed.png", "closed": "experimentEyeClosed.png", "back": "experimentEyeClosed.png"},
 	"tired": {"open": "experimentEyeHalfClosed.png", "closed": "experimentEyeClosed.png", "back": "experimentEyeClosed.png"},
-	"scared": {"open": "experimentEyeScared.png", "closed": "experimentEyeClosed.png", "back": "experimentEyeHalfClosedBack.png"},
+	"scared": {"open": "experimentEyeScared.png", "closed": "experimentEyeClosed.png", "back": "experimentEyeScaredBack.png"},
 	"panic": {"open": "experimentEyePanic.png", "closed": "experimentEyePanic.png", "back": "experimentEyePanic.png"},
 	"happy": {"open": "experimentEyeHappy.png", "closed": "experimentEyeHappy.png", "back": "experimentEyeHappy.png"},
 }

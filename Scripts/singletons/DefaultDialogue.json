@@ -143,6 +143,12 @@
 			"Stomach's buggin' me.",
 			"My tummy's all rumbly."
 		],
+		"petOverload": [
+			"Chill out!",
+			"That's enough...",
+			"Too much!",
+			"Hey! No more please..."
+		],
 		"petReject": [
 			"[shake]NO!",
 			"[shake]Don't touch me!",
