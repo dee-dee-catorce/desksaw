@@ -44,6 +44,22 @@ var jumpPower: float = -600.0
 @export var jumpCoolDown: float = 4.0
 var jumpTimer: float = 0.0
 
+## Smooth movement (inspired by Casualties: Unknown).
+## The pet speeds up and slows down smoothly: its velocity is changed a bit every physics step
+## instead of pushing it with a force (with the force the speed was jerky - it jumped up to ~560 px/s
+## with a 240 limit and averaged ~390). Jumps are 1.5x higher and still work for a moment after
+## walking off an edge ("coyote time"). Walking speed and jump height grow with the pet size.
+## Set smoothMovement to false to get the old movement back.
+@export var smoothMovement: bool = true
+const WALK_MULT := 1.6 # 240 * 1.6 = 384 px/s - about the average pace of the force-based walk (~390)
+const ACCEL := 2600.0 # px/s^2 on the ground: ~90 % of the walking speed in ~0.2 s
+const AIR_ACCEL := 900.0 # px/s^2 in the air: weaker control, like in CU
+const SLOWDOWN := 0.18 # share of the speed lost every physics step when not walking or turning around (half of it in the air)
+const JUMP_MULT := 1.22 # jump velocity x1.22 = jump height x1.5
+const ANIM_MULT := 0.945 # steps a bit slower, so the feet don't look faster than the body
+const COYOTE_TIME := 0.11 # s - a jump still works this long after walking off an edge (CU uses the same)
+var _sinceGrounded := 0.0 # s since the floor ray last touched the floor
+
 #pin joint storers
 var valAngularPinUp
 var valAngularPinDown
@@ -82,6 +98,9 @@ func _physics_process(delta: float) -> void:
 	checkJump()
 	detFlip()
 	phystate(delta)
+	_sinceGrounded = 0.0 if floorRay.is_colliding() else _sinceGrounded + delta
+	if _smooth():
+		_smoothPhysics(delta)
 	rigidtorso.linear_velocity = rigidtorso.linear_velocity.clamp(Vector2(
 		- maxspeed * maxspeedMult, -maxspeed * maxspeedMult), Vector2(maxspeed * maxspeedMult, maxspeed * maxspeedMult)
 		)
@@ -201,10 +220,12 @@ func phystate(_delta: float):
 			var moving_same_direction = sign(rigid.linear_velocity.x) == dir
 
 			if !moving_same_direction or abs(rigid.linear_velocity.x) < tempmax:
-				rigid.apply_central_force(Vector2(dir, 0) * speedacc)
+				if not _smooth(): # smooth movement speeds up in _smoothPhysics() instead
+					rigid.apply_central_force(Vector2(dir, 0) * speedacc)
 
 		
-			var normlized = abs(remap(rigid.linear_velocity.x, 0, maxspeed, 0.0, 1.0))
+			var animSpeed: float = maxspeed * (_sizeK() if _smooth() else 1.0)
+			var normlized = abs(remap(rigid.linear_velocity.x, 0, animSpeed, 0.0, 1.0))
 			#there used to be a long if statement here and my ass got flamed when i posted it
 			backwards = GlobalVariable.checkpositive(dir) == flip
 			var target_anim = "moveB" if backwards else "moveF"
@@ -213,6 +234,8 @@ func phystate(_delta: float):
 				animplay.play(target_anim)
 
 			animplay.speed_scale = (normlized / 2) + .1
+			if _smooth():
+				animplay.speed_scale *= ANIM_MULT
 			
 			
 			pass
@@ -289,11 +312,49 @@ func checkJump():
 	pass
 
 func jump():
-	if floorRay.is_colliding() and jumpTimer <= 0.0:
+	# coyote time: with smooth movement the jump still works for a moment after leaving the floor
+	var onFloor: bool = floorRay.is_colliding() or (_smooth() and _sinceGrounded <= COYOTE_TIME)
+	if onFloor and jumpTimer <= 0.0:
 		var vel = rigid.linear_velocity
-		vel.y = jumpPower
+		vel.y = jumpPower * (JUMP_MULT * sqrt(_sizeK()) if _smooth() else 1.0) # sqrt: jump height grows with the size
 		rigid.linear_velocity = vel
 		jumpTimer = jumpCoolDown
+		_sinceGrounded = COYOTE_TIME + 1.0 # no second jump in the air
+
+
+func _smooth() -> bool:
+	return smoothMovement and notragdolled
+
+
+## Pet size compared to the default one (spawnSize 1 = wrapper scale 4).
+func _sizeK() -> float:
+	var root := get_parent().get_parent() as Node2D
+	if root == null:
+		return 1.0
+	return maxf(absf(root.global_scale.y) / 4.0, 0.05)
+
+
+## Smooth movement: speed up, slow down and keep the walking speed limit by changing the velocity directly.
+func _smoothPhysics(delta: float) -> void:
+	if currstate == states.resting:
+		return
+	var grounded: bool = floorRay.is_colliding()
+	var sk := _sizeK()
+	var v: Vector2 = rigid.linear_velocity
+	var limit: float = maxspeed * WALK_MULT * sk
+	var tempmax: float = limit if not backwards else (maxspeed / 2.0 + 40.0) * WALK_MULT * sk
+	# speed up (in ~0.2 s on the ground), but never past the walking speed
+	if dir != 0.0 and (signf(v.x) != signf(dir) or absf(v.x) < tempmax):
+		v.x += dir * (ACCEL if grounded else AIR_ACCEL) * sk * delta
+		if signf(v.x) == signf(dir) and absf(v.x) > tempmax:
+			v.x = dir * tempmax
+	# slow down when not walking or when turning around
+	if dir == 0.0 or signf(v.x) == -signf(dir):
+		v.x *= 1.0 - SLOWDOWN * (1.0 if grounded else 0.5)
+	# on the ground - never faster than the walking speed (a push or a throw is slowed down quickly)
+	if grounded and absf(v.x) > limit * 1.05:
+		v.x = signf(v.x) * limit
+	rigid.linear_velocity = v
 
 
 func ragdoll(val: bool):
