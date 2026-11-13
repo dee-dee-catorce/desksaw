@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bmbg6rgo7o7p8"]
+
+[ext_resource type="Shader" uid="uid://b1x03c3wn85hg" path="res://assets/shaders/outline.gdshader" id="1_3ai54"]
+[ext_resource type="Script" uid="uid://d3331p2g86v0w" path="res://Scripts/nimpo/items/staticOBJ.gd" id="1_aavoy"]
+[ext_resource type="Texture2D" uid="uid://bu34ftxyjgxxb" path="res://assets/objectSpr/jailblock.png" id="3_aavoy"]
+[ext_resource type="Script" uid="uid://byi06muelj7dr" path="res://Scripts/nimpo/properties.gd" id="3_eddo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aavoy"]
+size = Vector2(200, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xu5n6"]
+shader = ExtResource("1_3ai54")
+shader_parameter/thickness = 0.0
+shader_parameter/ring_count = 4
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0.22745098, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = true
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ai54"]
+size = Vector2(100, 100)
+
+[node name="Body" type="StaticBody2D" unique_id=912713603]
+script = ExtResource("1_aavoy")
+metadata/_custom_type_script = "uid://busd3yfk5p1mx"
+metadata/Category = "object"
+
+[node name="Detector" type="Area2D" parent="." unique_id=1866926148]
+scale = Vector2(0.5, 0.5)
+
+[node name="Yeah" type="CollisionShape2D" parent="Detector" unique_id=273356045]
+shape = SubResource("RectangleShape2D_aavoy")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=673930975]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xu5n6")
+position = Vector2(0, -4.7683716e-07)
+scale = Vector2(4.1666665, 4.1666665)
+texture = ExtResource("3_aavoy")
+
+[node name="properties" type="Node" parent="." unique_id=399788717]
+script = ExtResource("3_eddo4")
+propertyTable = {
+"consumable": false,
+"danger": 0,
+"interest": 0,
+"moodBoostIfConsumable": 1.5,
+"object": true,
+"replenishIfConsumable": 7.5,
+"tasteIfConsumable": 8
+}
+
+[node name="Yeah" type="CollisionShape2D" parent="." unique_id=1639607262]
+shape = SubResource("RectangleShape2D_3ai54")

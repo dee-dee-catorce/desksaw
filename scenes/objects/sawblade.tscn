@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://4jvtd7obnvvl"]
 
 [ext_resource type="Shader" uid="uid://b1x03c3wn85hg" path="res://assets/shaders/outline.gdshader" id="1_u1oa1"]
-[ext_resource type="Texture2D" uid="uid://xwyffccnaght" path="res://assets/objectSpr/pixil-frame-0 (2).png" id="2_hwpld"]
-[ext_resource type="Script" uid="uid://cbm2skouhq87k" path="res://Scripts/impo/dragObj.gd" id="3_il453"]
+[ext_resource type="Script" uid="uid://d3331p2g86v0w" path="res://Scripts/nimpo/items/staticOBJ.gd" id="1_u148y"]
+[ext_resource type="Script" uid="uid://c2im4f4xc2n8h" path="res://Scripts/nimpo/items/sawbody.gd" id="3_wwl8o"]
 [ext_resource type="Script" uid="uid://byi06muelj7dr" path="res://Scripts/nimpo/properties.gd" id="4_jxtdb"]
 [ext_resource type="Script" uid="uid://bv2bc4lt5v7hu" path="res://addons/godot-rapier2d/custom_nodes/rapier_pin_joint_2d.gd" id="5_hwpld"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yourn"]
-size = Vector2(252, 254)
+[ext_resource type="Texture2D" uid="uid://sv2nnos8dguk" path="res://assets/objectSpr/Sawblade.png" id="5_wwl8o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xu5n6"]
 shader = ExtResource("1_u1oa1")
@@ -21,34 +19,15 @@ shader_parameter/square_border = true
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wpfx3"]
-radius = 130.06152
+[sub_resource type="CircleShape2D" id="CircleShape2D_u148y"]
+radius = 131.52946
 
-[node name="Body" type="RigidBody2D" unique_id=371602465]
-mass = 2.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yourn"]
+size = Vector2(252, 254)
+
+[node name="Body" type="StaticBody2D" unique_id=1554075459]
+script = ExtResource("1_u148y")
 metadata/Category = "object"
-
-[node name="Detector" type="Area2D" parent="." unique_id=1866926148]
-scale = Vector2(0.5, 0.5)
-
-[node name="Yeah" type="CollisionShape2D" parent="Detector" unique_id=273356045]
-shape = SubResource("RectangleShape2D_yourn")
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=673930975]
-texture_filter = 1
-material = SubResource("ShaderMaterial_xu5n6")
-position = Vector2(-9, -9)
-scale = Vector2(3.7226565, 3.7226565)
-texture = ExtResource("2_hwpld")
-
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=123731701]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_wpfx3")
-
-[node name="draggable" type="Node" parent="." unique_id=786882799 node_paths=PackedStringArray("sprite")]
-script = ExtResource("3_il453")
-sprite = NodePath("../Sprite")
-metadata/_custom_type_script = "uid://cbm2skouhq87k"
 
 [node name="properties" type="Node" parent="." unique_id=399788717]
 script = ExtResource("4_jxtdb")
@@ -61,14 +40,34 @@ propertyTable = {
 "tasteIfConsumable": 0
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=777426560]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1743756919]
+script = ExtResource("3_wwl8o")
+
+[node name="Sprite" type="Sprite2D" parent="RigidBody2D" unique_id=673930975]
+texture_filter = 1
+material = SubResource("ShaderMaterial_xu5n6")
+position = Vector2(1.8320293, -0.16797066)
+scale = Vector2(5.430664, 5.430664)
+texture = ExtResource("5_wwl8o")
+
+[node name="Collision" type="CollisionShape2D" parent="RigidBody2D" unique_id=123731701]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_u148y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RigidBody2D" unique_id=777426560]
 scale = Vector2(0.5, 0.5)
 metadata/object = false
 
-[node name="RapierPinJoint2D" type="PinJoint2D" parent="StaticBody2D" unique_id=1887788781]
+[node name="RapierPinJoint2D" type="PinJoint2D" parent="RigidBody2D/StaticBody2D" unique_id=1887788781]
 node_a = NodePath("..")
 node_b = NodePath("../..")
 motor_enabled = true
-motor_target_velocity = 52.35988
+motor_target_velocity = 69.81317
 script = ExtResource("5_hwpld")
 metadata/_custom_type_script = "uid://bv2bc4lt5v7hu"
+
+[node name="Detector" type="Area2D" parent="RigidBody2D" unique_id=1866926148]
+scale = Vector2(0.5, 0.5)
+
+[node name="Yeah" type="CollisionShape2D" parent="RigidBody2D/Detector" unique_id=273356045]
+shape = SubResource("RectangleShape2D_yourn")
