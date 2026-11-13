@@ -1,7 +1,7 @@
 extends Control
 class_name ExpieWidget
 
-var _loadedTextures: Dictionary[String,String] = {}
+var _loadedTextures: Dictionary[String, String] = {}
 var _has_to_reset: bool = false
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func ApplyTextures(skin_path: String) -> void:
 		push_error("skin path '%s' is not accessible." % [skin_path])
 		return
 	_loadedTextures.clear()
-
+	self.get_node("AnimationPlayer").play("idleagain")
 	if _has_to_reset:
 		# gross how were handling this, but we're reloading our 
 		# default expie textures every time we load a new skin to
@@ -27,12 +27,12 @@ func ApplyTextures(skin_path: String) -> void:
 			continue
 		_loadedTextures.set(tex.get_basename(), skin_path.path_join(tex))
 	
-	for node in get_children():
+	for node in find_children("*Sprite", "Sprite2D", true, false):
 		# for reference, we're matching the node names with
 		# the imported texture names, then quickly assigning their textures.
-		# so if we import a texture named "experimentHead", we will
-		# match it with the node named "Head".
-		var refname = "experiment%s" % [node.name.remove_chars("2")]
+		# so if we import a texture named "experimentFFoot", we will
+		# match it with the node named "FFootSprite".
+		var refname = "experiment%s" % [node.name.trim_suffix("Sprite")]
 		var imgpath = _loadedTextures.get(refname, null)
 
 		# ignore if no matches
@@ -40,8 +40,7 @@ func ApplyTextures(skin_path: String) -> void:
 			continue
 		# load internally if its a resource (probably [definitely] default)
 		elif imgpath.begins_with("res:"):
-			var _res = load(imgpath)
-			node.texture = _res
+			node.texture = load(imgpath)
 			continue
 		# load externally if we find something else
 		var _img = Image.new()
@@ -50,3 +49,6 @@ func ApplyTextures(skin_path: String) -> void:
 		node.texture = ImageTexture.create_from_image(_img)
 	
 	_has_to_reset = true
+
+
+

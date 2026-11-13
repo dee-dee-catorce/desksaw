@@ -176,6 +176,7 @@ script = ExtResource("3_scr57")
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingsView" type="Panel" parent="MarginContainer/ViewportPanel" unique_id=1702886988 node_paths=PackedStringArray("TabButtons", "TabPanels")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -606,7 +607,6 @@ label = "TERMINAL_USE_VULKAN_LABEL"
 key = "useVulkan"
 
 [node name="SkinsView" type="Panel" parent="MarginContainer/ViewportPanel" unique_id=1098396453 node_paths=PackedStringArray("defaultSkinButton", "spawnButton", "openFolderButton", "refreshButton", "openDBButton", "expieDisplayWidget", "skinsButtonList", "skinNameLabel")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -748,6 +748,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DisplayExpie" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1707983696 instance=ExtResource("8_fbkat")]
+propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
