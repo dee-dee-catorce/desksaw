@@ -1,10 +1,13 @@
 extends Node
 
 """
+recoding rn nvm
 
-this script has been DEPRECATED
 
-reason: ass
+
+
+
+
 
 """
 

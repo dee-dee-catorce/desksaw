@@ -29,6 +29,14 @@ size = Vector2(252, 254)
 script = ExtResource("1_u148y")
 metadata/Category = "object"
 
+[node name="Sprite2" type="Sprite2D" parent="." unique_id=1824666379]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_xu5n6")
+position = Vector2(1.8320293, -0.16797066)
+scale = Vector2(5.430664, 5.430664)
+texture = ExtResource("5_wwl8o")
+
 [node name="properties" type="Node" parent="." unique_id=399788717]
 script = ExtResource("4_jxtdb")
 propertyTable = {
