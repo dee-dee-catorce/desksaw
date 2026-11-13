@@ -1,8 +1,11 @@
 extends Panel
 
 @export_category("Nodes - DONT CHANGE")
+#im gonna change it FUCK YOU
 @export var defaultSkinButton: Button
 @export var spawnButton: Button
+
+@export var addDialogue: Button
 @export var openFolderButton: Button
 @export var refreshButton: Button
 @export var openDBButton: Button
@@ -22,6 +25,7 @@ var skinButtons: Array[Button] = []
 
 func _ready() -> void:
 	spawnButton.pressed.connect(_on_spawn_button_press)
+	addDialogue.pressed.connect(_on_cd_button_press)
 	defaultSkinButton.pressed.connect(_on_skin_button_press)
 	openFolderButton.pressed.connect(_on_skin_folder_button_press)
 	refreshButton.pressed.connect(_on_refresh_button_press)
@@ -143,3 +147,28 @@ func _on_refresh_button_press() -> void:
 
 func _on_db_button_press() -> void:
 	OS.shell_open("https://skin.cat-bot.de/")
+
+#just following the naming conventions here, i fucking hate snake case personally
+func _on_cd_button_press() -> void:
+	newDialogue(ProjectSettings.globalize_path(GlobalVariable.userSkinPath))
+
+
+func newDialogue(skin_dir: String) -> void:
+	var defaultTrans = "res://Scripts/singletons/CustomDialogueTemplate.json"
+	var dialoguepath = skin_dir.path_join("CUSTOM-DIALOGUE.json")
+
+
+	if !FileAccess.file_exists(dialoguepath):
+		var text = gbData.loadjson(defaultTrans).duplicate(true)
+		gbData.savetodisk(dialoguepath, text)
+
+
+	OS.shell_open(dialoguepath)
+
+
+"""
+
+TODO: CHANGE TEXT IF THERES ALREADY A CUSTOM FILE THERE
+CHANGE*
+
+"""

@@ -1,0 +1,40 @@
+{
+	"diaGlobal": {
+		"AAAAAAAA pls read": [
+			"Hello world! Make sure every line of dialogue in these lists are seperated with a comma at the end! -->",
+		],
+		"start": [
+			"Hello world! Make sure every line of dialogue in these lists are seperated with a comma at the end! -->",
+			"Woah!"
+		],
+		"Passive": [
+			"neutral passive text"
+		],
+		"HappyPassive": [
+			"Happy text"
+		],
+		"LowPassive": [
+			"Sad text"
+		],
+		"VeryLowPassive": [
+			"depressed text"
+		],
+		"beingDragged": [],
+		"getUp": [],
+		"getUpPet": [],
+		"fell": [],
+		"screamBIG": [],
+		"hungry": [],
+		"sleepy": [],
+		"reallySleepy": [],
+		"pet": [],
+		"petReject": [],
+		"Full": [],
+		"EatReject": [
+			"UNUSED AT THE MOMENT. DO NOT BOTHER WITH THIS"
+		],
+		"EatBad": [],
+		"EatOk": [],
+		"EatGood": []
+	}
+}

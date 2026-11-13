@@ -49,6 +49,3 @@ func ApplyTextures(skin_path: String) -> void:
 		node.texture = ImageTexture.create_from_image(_img)
 	
 	_has_to_reset = true
-
-
-

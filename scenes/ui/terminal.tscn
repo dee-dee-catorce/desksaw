@@ -606,7 +606,7 @@ layout_mode = 2
 label = "TERMINAL_USE_VULKAN_LABEL"
 key = "useVulkan"
 
-[node name="SkinsView" type="Panel" parent="MarginContainer/ViewportPanel" unique_id=1098396453 node_paths=PackedStringArray("defaultSkinButton", "spawnButton", "openFolderButton", "refreshButton", "openDBButton", "expieDisplayWidget", "skinsButtonList", "skinNameLabel")]
+[node name="SkinsView" type="Panel" parent="MarginContainer/ViewportPanel" unique_id=1098396453 node_paths=PackedStringArray("defaultSkinButton", "spawnButton", "addDialogue", "openFolderButton", "refreshButton", "openDBButton", "expieDisplayWidget", "skinsButtonList", "skinNameLabel")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -618,6 +618,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_72ypp")
 script = ExtResource("7_fbkat")
 defaultSkinButton = NodePath("MarginContainer/HBoxContainer/SelectorPanel/VBoxContainer/SkinsMarginContainer/ScrollContainer/VBoxContainer/DefaultSkinButton")
 spawnButton = NodePath("MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector/SpawnButton")
+addDialogue = NodePath("MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector/CustomDialogue")
 openFolderButton = NodePath("MarginContainer/HBoxContainer/SelectorPanel/VBoxContainer/OptionsMarginContainer/VBoxContainer/HBoxContainer/SkinFolder")
 refreshButton = NodePath("MarginContainer/HBoxContainer/SelectorPanel/VBoxContainer/OptionsMarginContainer/VBoxContainer/HBoxContainer/Refresh")
 openDBButton = NodePath("MarginContainer/HBoxContainer/SelectorPanel/VBoxContainer/OptionsMarginContainer/VBoxContainer/SkinDB")
@@ -758,7 +759,6 @@ metadata/display = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-columns = 6
 
 [node name="PreviousButton" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=403882709]
 visible = false
@@ -768,6 +768,10 @@ text = "<"
 [node name="SpawnButton" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=2042383996]
 layout_mode = 2
 text = "TERMINAL_SPAWN_BTN_TEXT"
+
+[node name="CustomDialogue" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=930041412]
+layout_mode = 2
+text = "TERMINAL_CUSTOM_DIALOGUE_BTN_TEXT"
 
 [node name="NextButton" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=350446503]
 visible = false

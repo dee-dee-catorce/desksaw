@@ -137,7 +137,7 @@ func removePet(id: String) -> void:
 
 func newDialogue():
 	#fix this later make it bassdfjogsdjfoigjsdfgjosdifgjiosdfjg nvm its good as it
-	var defaultTrans = "res://Scripts/singletons/TEMPDialogue.json"
+	var defaultTrans = "res://Scripts/singletons/DefaultDialogue.json"
 	
 	text = loadjson(defaultTrans).duplicate(true)
 	savetodisk(dialoguePath, text)
