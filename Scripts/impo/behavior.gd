@@ -192,7 +192,8 @@ func sleep():
 				#break if its below 10 (aka good enough to get up)
 				sleepParticle.emitting = false
 
-				moveSys.rigid.global_position = moveSys.rigidtorso.global_position
+				if not moveSys.smoothGetup:
+					moveSys.rigid.global_position = moveSys.rigidtorso.global_position
 
 				moveSys.rigid.linear_velocity = Vector2.ZERO
 
@@ -395,7 +396,8 @@ func _handleRagdoll(fromPet: bool) -> void:
 	moveSys.rigid.collision_mask = 1
 	moveSys.rigid.freeze = false
 	moveSys.rigid.linear_velocity = Vector2.ZERO
-	moveSys.rigid.global_position = moveSys.rigidtorso.global_position
+	if not moveSys.smoothGetup:
+		moveSys.rigid.global_position = moveSys.rigidtorso.global_position
 	moveSys.ragdoll(true)
 	ragdolled = false
 	ragdollInProgress = false

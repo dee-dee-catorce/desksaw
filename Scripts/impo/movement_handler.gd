@@ -75,6 +75,10 @@ var lean := 0.0 # degrees, world: + is clockwise (top of the body to the right)
 var crouch := 0.0 # px, world: hip lower, feet stay (landing); faded out by LiveBody
 var visualOffset := Vector2.ZERO # px, world: the picture lags behind the body after a step up and catches up (LiveBody)
 var liveBody = null
+## Smooth visual recovery from a settled ragdoll. Off restores the old snap.
+@export var smoothGetup: bool = true
+@export_range(0.1, 2.0, 0.05) var getupDuration: float = 0.65
+var getupBlend = null
 var _lastVel := Vector2.ZERO
 var _landCooldown := 0.0
 
@@ -97,6 +101,8 @@ func _ready() -> void:
 	pass
 func _physics_process(delta: float) -> void:
 	jumpTimer -= delta
+	if getupBlend != null and getupBlend.active:
+		dir = 0.0
 
 	if currstate != states.resting:
 		if !floorRay.is_colliding() and abs(rigid.linear_velocity.y) > 2:
@@ -114,7 +120,8 @@ func _physics_process(delta: float) -> void:
 			initswithc(states.falling)
 		dir = 0.0
 	headIKf()
-	checkJump()
+	if getupBlend == null or not getupBlend.active:
+		checkJump()
 	detFlip()
 	phystate(delta)
 	_sinceGrounded = 0.0 if floorRay.is_colliding() else _sinceGrounded + delta
@@ -390,6 +397,10 @@ func _attachLiveBody() -> void:
 	liveBody.name = "LiveBody"
 	skeleton.add_child(liveBody) # the last child of the skeleton - after IK (SoupMod)
 	liveBody.setup(self)
+	getupBlend = preload("res://Scripts/impo/smooth_getup.gd").new()
+	getupBlend.name = "SmoothGetup"
+	skeleton.add_child(getupBlend)
+	getupBlend.setup(self)
 
 
 ## Living body numbers (CU FixedUpdate): crouch on landing, lean from acceleration.
@@ -453,6 +464,15 @@ func ragdoll(val: bool):
 	if val == notragdolled:
 		return
 
+	# Capture BEFORE enabling RemoteTransform or moving the capsule (limbs are its children).
+	var blending: bool = val and smoothGetup and getupBlend != null
+	var from_pose := {}
+	var torso_position: Vector2 = rigidtorso.global_position
+	if blending:
+		for limb in rigid.find_children("*", "RigidBody2D", true, false):
+			from_pose[limb] = (limb as Node2D).global_transform
+	if not val and getupBlend != null:
+		getupBlend.cancel()
 	notragdolled = val
 
 	if !val:
@@ -461,12 +481,16 @@ func ragdoll(val: bool):
 	var descendants = skeleton.find_children("*", "", true, false)
 	var moredesc = rigid.find_children("*", "", true, false)
 
+	var blend_remotes: Array = []
 	for child in descendants:
 		if child is RemoteTransform2D:
 			var rtt: RemoteTransform2D = child
-			rtt.update_position = val
-			rtt.update_rotation = val
-			rtt.update_scale = val
+			var blend_limb: bool = blending and rtt.get_parent() is Bone2D and rtt.get_node_or_null(rtt.remote_path) is RigidBody2D
+			if blend_limb:
+				blend_remotes.append(rtt)
+			rtt.update_position = val and not blend_limb
+			rtt.update_rotation = val and not blend_limb
+			rtt.update_scale = val and not blend_limb
 
 	for child in moredesc:
 		if child is RigidBody2D:
@@ -484,5 +508,32 @@ func ragdoll(val: bool):
 			liveBody.onRagdoll()
 		sigragdoll.emit()
 	else:
-		rigid.global_position.x = rigidtorso.global_position.x
-		rigid.global_position.y = rigidtorso.global_position.y
+		if blending:
+			initswithc(states.idle)
+			switch_hitbox(1)
+			rigid.global_position = _getupPosition(torso_position)
+			animplay.play("idleagain")
+			animplay.advance(0.0)
+			getupBlend.begin(from_pose, blend_remotes)
+		else:
+			rigid.global_position.x = rigidtorso.global_position.x
+			rigid.global_position.y = rigidtorso.global_position.y
+
+
+## Place the standing capsule on the surface below the resting torso.
+## Keep all pose changes in SmoothGetup; this only chooses the controller position.
+func _getupPosition(torso_position: Vector2) -> Vector2:
+	if normal == null or not (normal.shape is CapsuleShape2D):
+		return torso_position
+	var shape := normal.shape as CapsuleShape2D
+	var height := shape.height * absf(normal.global_scale.y)
+	var bottom_offset := normal.global_position.y - rigid.global_position.y + height * 0.5
+	var excluded: Array[RID] = [rigid.get_rid()]
+	for part in rigid.find_children("*", "CollisionObject2D", true, false):
+		excluded.append(part.get_rid())
+	var query := PhysicsRayQueryParameters2D.create(torso_position - Vector2(0.0, 2.0),
+		torso_position + Vector2(0.0, height * 2.0), 1, excluded)
+	var hit := rigid.get_world_2d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return torso_position
+	return Vector2(torso_position.x, float(hit["position"].y) - bottom_offset - 1.0)
