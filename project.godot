@@ -56,7 +56,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-console/plugin.cfg", "res://addons/soupik/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-console/plugin.cfg", "res://addons/soupik/plugin.cfg", "res://addons/translations_from_json/plugin.cfg")
 
 [global]
 
@@ -106,7 +106,7 @@ TemporarilyHide={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localization/localization.en.translation", "res://localization/localization.cs.translation")
+locale/translations=PackedStringArray("res://localization/en.json")
 locale/translation_add_builtin_strings_to_pot=true
 
 [physics]

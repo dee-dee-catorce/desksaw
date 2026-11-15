@@ -1,0 +1,14 @@
+[remap]
+
+importer="json_translations_importer"
+type="Translation"
+uid="uid://c5x8f4dcr8pvo"
+path="res://.godot/imported/en.json-35356cbb99012d5f942227cb8a0b4298.translation"
+
+[deps]
+
+source_file="res://localization/en.json"
+dest_files=["res://.godot/imported/en.json-35356cbb99012d5f942227cb8a0b4298.translation"]
+
+[params]
+

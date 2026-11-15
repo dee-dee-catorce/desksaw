@@ -119,7 +119,7 @@ func pickFolder():
 	dialog.access = FileDialog.ACCESS_FILESYSTEM
 	dialog.use_native_dialog = true
 
-	dialog.add_filter("*.translation ; Godot Translation File")
+	dialog.add_filter("*.json")
 
 	add_child(dialog)
 	dialog.popup_file_dialog()
