@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bl462l5byyohh" path="res://assets/themes/ConsoleTheme.tres" id="1_yx70c"]
 
-[node name="Control" type="Control" unique_id=101072280]
+[node name="StatMenu" type="Control" unique_id=101072280]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -16.0

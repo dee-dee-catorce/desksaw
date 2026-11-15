@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dhy38yajx370y"]
+
+[ext_resource type="Theme" uid="uid://byc077a5abgew" path="res://assets/themes/dialogue.tres" id="1_1pw0m"]
+[ext_resource type="Texture2D" uid="uid://bkfi86yhwu642" path="res://icons/SpeechBubble0.png" id="2_o34s3"]
+[ext_resource type="Script" uid="uid://bsjtpx1xkqipu" path="res://Scripts/impo/talk_icon.gd" id="3_qwnfu"]
+[ext_resource type="PackedScene" uid="uid://c5tuv3hsjyl02" path="res://scenes/statPopup.tscn" id="4_ytewm"]
+
+[node name="personalUi" type="Node2D" unique_id=354078104]
+rotation = -1.1779506e-05
+scale = Vector2(0.999981, 0.99997854)
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1407993971]
+texture_filter = 1
+offset_left = -122.79461
+offset_top = -24.251263
+offset_right = 122.74047
+offset_bottom = -5.2512627
+theme = ExtResource("1_1pw0m")
+theme_override_colors/default_color = Color(0.97141486, 0.76168233, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = " Hola yo Soy Expie"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="TalkIcon" type="Sprite2D" parent="." unique_id=540244541]
+visible = false
+position = Vector2(0, -32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_o34s3")
+script = ExtResource("3_qwnfu")
+
+[node name="Control" parent="." unique_id=101072280 instance=ExtResource("4_ytewm")]
+visible = false
+offset_left = -15.837868
+offset_top = -57.137337
+offset_right = 16.162132
+offset_bottom = -7.0826797
+
+[node name="DebugText" type="Label" parent="." unique_id=1863387778]
+visible = false
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 36.0
+offset_bottom = -17.0
+text = "[expie ID]"
+horizontal_alignment = 1

@@ -24,17 +24,14 @@
 [ext_resource type="Script" uid="uid://7c5ffi5w6il5" path="res://Scripts/impo/sawianBehaviour/movement_handler.gd" id="18_ry0af"]
 [ext_resource type="Script" uid="uid://da7sjmfsmufll" path="res://Scripts/impo/dialogueManager.gd" id="19_xvb24"]
 [ext_resource type="Script" uid="uid://pg0ohwt8ba8h" path="res://Scripts/impo/faceSys.gd" id="20_l2ler"]
-[ext_resource type="Theme" uid="uid://byc077a5abgew" path="res://assets/themes/dialogue.tres" id="21_57y4j"]
+[ext_resource type="PackedScene" uid="uid://dhy38yajx370y" path="res://scenes/ui/uiAndDialogue.tscn" id="20_oiscl"]
 [ext_resource type="Script" uid="uid://jnsq0pscs6et" path="res://Scripts/impo/sleep_manager.gd" id="22_dvaus"]
 [ext_resource type="Script" uid="uid://bhc642h64r7ev" path="res://Scripts/impo/moodSys.gd" id="22_un334"]
 [ext_resource type="Script" uid="uid://cmppv0optma7o" path="res://Scripts/impo/damageHandler.gd" id="25_3pkli"]
 [ext_resource type="Script" uid="uid://bvssnx7cofbpp" path="res://Scripts/impo/hunger_handler.gd" id="26_84wtd"]
 [ext_resource type="Script" uid="uid://dnk6vcggbqmhu" path="res://Scripts/impo/det_radius.gd" id="30_873iu"]
 [ext_resource type="Script" uid="uid://bmc5ssn6i83yj" path="res://Scripts/impo/stat_watcher.gd" id="31_873iu"]
-[ext_resource type="PackedScene" uid="uid://c5tuv3hsjyl02" path="res://scenes/statPopup.tscn" id="32_oiscl"]
-[ext_resource type="Texture2D" uid="uid://bkfi86yhwu642" path="res://icons/SpeechBubble0.png" id="33_8k2ma"]
 [ext_resource type="Script" uid="uid://yi34xjk1bc2h" path="res://Scripts/impo/yap_handler.gd" id="34_9p4qw"]
-[ext_resource type="Script" uid="uid://bsjtpx1xkqipu" path="res://Scripts/impo/talk_icon.gd" id="35_7u1xz"]
 
 [sub_resource type="Animation" id="Animation_d7061"]
 length = 0.001
@@ -2874,48 +2871,8 @@ hit_from_inside = true
 script = ExtResource("17_6mwry")
 behaviornode = NodePath("../../behavior")
 
-[node name="textParent" type="Node2D" parent="." unique_id=797776170]
+[node name="textParent" parent="." unique_id=354078104 instance=ExtResource("20_oiscl")]
 position = Vector2(0.15008554, -39.96454)
-rotation = -1.1779506e-05
-scale = Vector2(0.999981, 0.99997854)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="textParent" unique_id=323548257]
-texture_filter = 1
-offset_left = -122.79461
-offset_top = -24.251263
-offset_right = 122.74047
-offset_bottom = -5.2512627
-theme = ExtResource("21_57y4j")
-theme_override_colors/default_color = Color(0.97141486, 0.76168233, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = " "
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="TalkIcon" type="Sprite2D" parent="textParent" unique_id=1523084764]
-visible = false
-position = Vector2(0, -32)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("33_8k2ma")
-script = ExtResource("35_7u1xz")
-
-[node name="Control" parent="textParent" unique_id=101072280 instance=ExtResource("32_oiscl")]
-visible = false
-offset_left = -15.837868
-offset_top = -57.137337
-offset_right = 16.162132
-offset_bottom = -7.0826797
-
-[node name="DebugText" type="Label" parent="textParent" unique_id=739158021]
-visible = false
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 36.0
-offset_bottom = -17.0
-text = "[expie ID]"
-horizontal_alignment = 1
 
 [node name="behavior" type="Node" parent="." unique_id=114253932 node_paths=PackedStringArray("sleepParticle")]
 script = ExtResource("18_8de8m")
@@ -2964,7 +2921,7 @@ script = ExtResource("22_un334")
 
 [node name="dialogue" type="Node" parent="behavior" unique_id=1705693237 node_paths=PackedStringArray("richtextlabel", "fasdfasdfasddfas")]
 script = ExtResource("19_xvb24")
-richtextlabel = NodePath("../../textParent/RichTextLabel")
+richtextlabel = NodePath("")
 fasdfasdfasddfas = NodePath("../movementHandler")
 
 [node name="dialogueTimer" type="Timer" parent="behavior/dialogue" unique_id=1048411103]
@@ -2986,7 +2943,7 @@ script = ExtResource("30_873iu")
 
 [node name="statWatcher" type="Node" parent="behavior" unique_id=464220213 node_paths=PackedStringArray("window")]
 script = ExtResource("31_873iu")
-window = NodePath("../../textParent/Control")
+window = NodePath("")
 
 [connection signal="body_entered" from="RigidBodies/Head/Dect" to="behavior/detRadius" method="_on_dect_body_entered"]
 [connection signal="body_exited" from="RigidBodies/Head/Dect" to="behavior/detRadius" method="_on_dect_body_exited"]

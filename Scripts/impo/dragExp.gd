@@ -48,7 +48,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 		## ++ adding this to make it to where wrjbgpijkdfgjndfnj the little stat window show
-	owner.get_node("textParent/Control").visible = not _hovered_bodies.is_empty() and Input.is_action_pressed("ctrl")
+		#hey whoever chose to hardcode this path fuck you
+		#there is a none zero chance that it was me and i dont remember but who gaf
+	owner.get_node("textParent/StatMenu").visible = not _hovered_bodies.is_empty() and Input.is_action_pressed("ctrl")
 	if _use_x11_input_regions:
 		_update_x11_input_regions()
 
