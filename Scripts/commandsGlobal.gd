@@ -40,15 +40,26 @@ func reload():
 	get_tree().change_scene_to_file("res://scenes/newmain.tscn")
 
 
+"""
+the grand plan 
+
+instance stat menu
+
+"""
+
 func spawnExpie(petId: String = ""):
 	var instance = preload("res://scenes/sawianBase.tscn").instantiate()
+
+	var statInstance = preload("res://scenes/ui/uiAndDialogue.tscn").instantiate()
 
 	if petId == "":
 		var skinName = GlobalVariable.userSkinPath.substr(0, len(GlobalVariable.userSkinPath) - 1)
 		skinName = skinName.substr(skinName.rfind("/") + 1)
 		petId = gbData.addPet(skinName)
 	instance.get_node("behavior").petId = petId
-
+	instance.get_node("behavior/dialogue").richtextlabel = statInstance.text
+	instance.get_node("behavior/statWatcher").window = statInstance.get_node("statMenu")
+	statInstance.parent = instance.get_node("RigidBodies/Head")
 	var wrapper = Node2D.new()
 	wrapper.scale = Vector2(4.0, 4.0)
 	
@@ -60,10 +71,14 @@ func spawnExpie(petId: String = ""):
 			wrapper.scale *= gbData.settings["spawnSize"]
 		
 	get_tree().current_scene.add_child(wrapper)
+	
 	wrapper.owner = get_tree().current_scene
 
 	wrapper.add_child(instance)
+	get_tree().current_scene.add_child(statInstance)
 	instance.owner = get_tree().current_scene
+
+	statInstance.owner = get_tree().current_scene
 
 	instance.global_position.x = float(GlobalVariable.screenWidth) / 2
 	instance.global_position.y = - float(GlobalVariable.screenHeight) * 2

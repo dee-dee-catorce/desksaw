@@ -106,7 +106,7 @@ TemporarilyHide={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localization/en.json")
+locale/translations=PackedStringArray("res://localization/localization.en.translation", "res://localization/localization.cs.translation")
 locale/translation_add_builtin_strings_to_pot=true
 
 [physics]

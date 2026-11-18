@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://dhy38yajx370y"]
 
 [ext_resource type="Theme" uid="uid://byc077a5abgew" path="res://assets/themes/dialogue.tres" id="1_1pw0m"]
+[ext_resource type="Script" uid="uid://bgvw6clliridq" path="res://Scripts/ui/statNDialogue.gd" id="1_o34s3"]
 [ext_resource type="Texture2D" uid="uid://bkfi86yhwu642" path="res://icons/SpeechBubble0.png" id="2_o34s3"]
 [ext_resource type="Script" uid="uid://bsjtpx1xkqipu" path="res://Scripts/impo/talk_icon.gd" id="3_qwnfu"]
 [ext_resource type="PackedScene" uid="uid://c5tuv3hsjyl02" path="res://scenes/statPopup.tscn" id="4_ytewm"]
+[ext_resource type="Texture2D" uid="uid://8krhg3q0hg5q" path="res://assets/objectSpr/thornback.png" id="6_qwnfu"]
 
-[node name="personalUi" type="Node2D" unique_id=354078104]
+[node name="uiAndDialogue" type="Node2D" unique_id=354078104 node_paths=PackedStringArray("text")]
 rotation = -1.1779506e-05
 scale = Vector2(0.999981, 0.99997854)
+script = ExtResource("1_o34s3")
+text = NodePath("Text")
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=1407993971]
 texture_filter = 1
@@ -25,24 +29,20 @@ scroll_active = false
 horizontal_alignment = 1
 
 [node name="TalkIcon" type="Sprite2D" parent="." unique_id=540244541]
-visible = false
 position = Vector2(0, -32)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_o34s3")
 script = ExtResource("3_qwnfu")
 
-[node name="Control" parent="." unique_id=101072280 instance=ExtResource("4_ytewm")]
+[node name="statMenu" parent="." unique_id=101072280 instance=ExtResource("4_ytewm")]
 visible = false
 offset_left = -15.837868
 offset_top = -57.137337
 offset_right = 16.162132
 offset_bottom = -7.0826797
 
-[node name="DebugText" type="Label" parent="." unique_id=1863387778]
+[node name="Thornback" type="Sprite2D" parent="." unique_id=1810677182]
 visible = false
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 36.0
-offset_bottom = -17.0
-text = "[expie ID]"
-horizontal_alignment = 1
+position = Vector2(-1.999527, -44.000977)
+scale = Vector2(4.3277974, 4.3277974)
+texture = ExtResource("6_qwnfu")
