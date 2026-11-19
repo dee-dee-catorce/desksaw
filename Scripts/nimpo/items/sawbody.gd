@@ -6,5 +6,5 @@ extends RigidBody2D
 
 #fisx this shit
 func _process(delta: float) -> void:
-	position = get_parent().position * .5
+	global_position = get_parent().global_position 
 	pass

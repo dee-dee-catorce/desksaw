@@ -34,11 +34,6 @@ func _ready():
 	var def = gbData.settings.get("defaultSkin", "Body")
 	GlobalVariable.userSkinPath = "user://skin/" + def + "/"
 
-	if gbData.settings.get("expiePersistence", false):
-		loadExpiePersistence()
-	else:
-		gbData.data["saw"] = {}
-		CommandsGlobal.spawnExpie()
 
 	#lol()
 
