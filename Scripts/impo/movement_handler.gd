@@ -158,6 +158,8 @@ func headIKf():
 
 	if behavior.attention != null:
 		mostInterest = 999.0
+		
+
 		targetPos = behavior.attention.global_position
 	else:
 		var inRadius = dectNode.inRadius
