@@ -749,7 +749,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DisplayExpie" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1707983696 instance=ExtResource("8_fbkat")]
-visible = false
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 4
