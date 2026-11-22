@@ -70,6 +70,10 @@ mouse_filter = 2
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1718764187]
 
 [node name="ConsoleWindowPanel" parent="CanvasLayer2" unique_id=2084845338 instance=ExtResource("4_8gj0p")]
+offset_left = 394.0
+offset_top = 29.0
+offset_right = 974.0
+offset_bottom = 349.0
 
 [node name="PersistenceWarningPopup" parent="CanvasLayer2" unique_id=178805227 instance=ExtResource("5_8gj0p")]
 visible = false

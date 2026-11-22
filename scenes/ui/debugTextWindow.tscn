@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://dkbc7rwrikvrf"]
+
+[ext_resource type="Theme" uid="uid://cle2qxvhrms2" path="res://assets/themes/ui/CasMenuTheme.tres" id="1_v2l0a"]
+[ext_resource type="Script" uid="uid://c1ego53p0tdwr" path="res://Scripts/ui/debug_text_window.gd" id="2_5pc5y"]
+[ext_resource type="Script" uid="uid://blg811jk2cjt4" path="res://Scripts/nimpo/clickArea.gd" id="3_5pc5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2r3q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37254903, 0.37254903, 0.37254903, 1)
+
+[node name="SettingsInput" type="PanelContainer" unique_id=1077227112 node_paths=PackedStringArray("inputText", "modText", "output")]
+offset_right = 424.0
+offset_bottom = 98.0
+theme = ExtResource("1_v2l0a")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m2r3q")
+script = ExtResource("2_5pc5y")
+inputText = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Input")
+modText = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Modifier")
+output = NodePath("MarginContainer/VBoxContainer/Output")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=53382515]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=92812792]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=607040893]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1581211720]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Input text"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Input" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1777176753]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "_"
+backspace_deletes_composite_character_enabled = true
+wrap_mode = 1
+indent_wrapped_lines = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=507161754]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=170594188]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Text mod type"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Modifier" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=931977728]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "_"
+backspace_deletes_composite_character_enabled = true
+wrap_mode = 1
+indent_wrapped_lines = true
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=763432944]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Panel" unique_id=1955111769]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+
+[node name="Label2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Panel" unique_id=862325075]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.14
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -1.5)
+text = "100%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Output" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=594531947]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Output"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Disclaim" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=712382754]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "No such modifier detected!"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="ClickArea" type="Control" parent="." unique_id=1640945603]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("3_5pc5y")
+metadata/_custom_type_script = "uid://blg811jk2cjt4"
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=642036707]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = -8
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Weight"
+fit_content = true
+scroll_active = false
+vertical_alignment = 2
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/Input" to="." method="modChange"]
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/Modifier" to="." method="modChange"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Panel/HSlider" to="." method="_on_h_slider_value_changed"]

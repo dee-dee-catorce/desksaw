@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bccf5shxpyr5a"]
+
+[ext_resource type="Theme" uid="uid://dknpyc8k8uut1" path="res://assets/themes/ui/CasWindowTheme.tres" id="1_kuow5"]
+[ext_resource type="Script" uid="uid://bu1nlyxwv0ll8" path="res://Scripts/ui/popUpMain.gd" id="2_1oiqt"]
+[ext_resource type="Script" uid="uid://3nlr337l3jd1" path="res://Scripts/ui/windowController.gd" id="3_rgya0"]
+[ext_resource type="Theme" uid="uid://cle2qxvhrms2" path="res://assets/themes/ui/CasMenuTheme.tres" id="4_ydfx0"]
+[ext_resource type="PackedScene" uid="uid://dkbc7rwrikvrf" path="res://scenes/ui/debugTextWindow.tscn" id="5_cjcyy"]
+[ext_resource type="Texture2D" uid="uid://oyvhsg2ukamx" path="res://assets/textures/ui/uiResize.png" id="6_ltjfk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_murnt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.37254903, 0.37254903, 0.37254903, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ri3og"]
+
+[node name="PopUpWindowPanel" type="Panel" unique_id=2084845338 node_paths=PackedStringArray("windowControl", "titleNode", "labelNode", "yesButton", "noButton", "closeButton", "resizeButton")]
+offset_right = 250.0
+offset_bottom = 180.0
+theme = ExtResource("1_kuow5")
+script = ExtResource("2_1oiqt")
+windowControl = NodePath("WindowController")
+titleNode = NodePath("TitleBar/Title")
+labelNode = NodePath("MarginContainer/ViewportPanel/VBoxContainer/MarginContainer/RichTextLabel")
+yesButton = NodePath("MarginContainer/ViewportPanel/VBoxContainer/MarginContainer/HBoxContainer/YesButton")
+noButton = NodePath("MarginContainer/ViewportPanel/VBoxContainer/MarginContainer/HBoxContainer/NoButton")
+closeButton = NodePath("TitleBar/Close")
+resizeButton = NodePath("Resize")
+metadata/_edit_horizontal_guides_ = [-593.0]
+
+[node name="WindowController" type="Node" parent="." unique_id=123827946 node_paths=PackedStringArray("TitleBar", "CloseButton", "ResizeButton")]
+script = ExtResource("3_rgya0")
+TitleBar = NodePath("../TitleBar")
+CloseButton = NodePath("../TitleBar/Close")
+ResizeButton = NodePath("../Resize")
+minimumWindowSize = Vector2(250, 180)
+enableMaximumWindowSize = true
+maximumWindowSize = Vector2(750, 540)
+killOnClose = true
+metadata/_custom_type_script = "uid://3nlr337l3jd1"
+
+[node name="TitleBar" type="Button" parent="." unique_id=535690638]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme = ExtResource("1_kuow5")
+
+[node name="Close" type="Button" parent="TitleBar" unique_id=137161287]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = 35.0
+grow_horizontal = 0
+theme = ExtResource("4_ydfx0")
+theme_override_font_sizes/font_size = 18
+text = "X"
+text_overrun_behavior = 2
+autowrap_mode = 1
+clip_text = true
+
+[node name="Title" type="Label" parent="TitleBar" unique_id=1775984894]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ydfx0")
+text = "Alert!"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=772413608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ydfx0")
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ViewportPanel" type="Panel" parent="MarginContainer" unique_id=726533421]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_murnt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ViewportPanel" unique_id=99059030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsInput" parent="MarginContainer/ViewportPanel/VBoxContainer" unique_id=1327362505 instance=ExtResource("5_cjcyy")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ViewportPanel/VBoxContainer" unique_id=1634680433]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ViewportPanel/VBoxContainer/MarginContainer" unique_id=1582833257]
+layout_mode = 2
+
+[node name="NoButton" type="Button" parent="MarginContainer/ViewportPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=595419307]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+
+[node name="YesButton" type="Button" parent="MarginContainer/ViewportPanel/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1161506996]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/ViewportPanel/VBoxContainer/MarginContainer" unique_id=1511862757]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kuow5")
+bbcode_enabled = true
+text = "[rainbow]Sample text[/rainbow]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Resize" type="Button" parent="." unique_id=706981152]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -24.027405
+offset_right = 0.027404785
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.0039321, 1)
+theme = ExtResource("4_ydfx0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ri3og")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ri3og")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ri3og")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ri3og")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ri3og")
+icon = ExtResource("6_ltjfk")
+icon_alignment = 1
+expand_icon = true

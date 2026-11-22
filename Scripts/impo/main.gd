@@ -34,6 +34,11 @@ func _ready():
 	var def = gbData.settings.get("defaultSkin", "Body")
 	GlobalVariable.userSkinPath = "user://skin/" + def + "/"
 
+	if gbData.settings.get("expiePersistence", false):
+		loadExpiePersistence()
+	else:
+		gbData.data["saw"] = {}
+		CommandsGlobal.spawnExpie()
 
 	#lol()
 
@@ -49,7 +54,7 @@ func _ready():
 		if use_vulkan:
 			OS.shell_open('https://github.com/dee-dee-catorce/desksaw/wiki')
 
-	
+
 func createBorders():
 	taskbarPos = clampi(taskbarPos, 0, screenHeight)
 	$Floor.position = Vector2(float(screenWidth) / 2, taskbarPos)
@@ -94,7 +99,7 @@ func update_obj_metas():
 
 func loadExpiePersistence():
 	print("loading expies...")
-	
+
 
 	if (
 		gbData.data["saw"].size() > 20

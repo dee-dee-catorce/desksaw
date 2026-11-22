@@ -6,7 +6,7 @@ var data
 @export var richtextlabel: RichTextLabel
 @export var textspeed: float = 0.04
 var pause: Array = [",", ".", "!"]
-var vowls: Array = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"]
+
 var bb: Array = ["[shake]", "[wave]"]
 var isTyping: bool = false
 var pool: Array = []
@@ -87,10 +87,11 @@ func send(cooldown: float = 0.0, ignoreCooldown: bool = true) -> void:
 		var text: String = pool.pick_random()
 		var effectiveSpeed = speedMod
 
-		if text.find("[stupid]") != -1:
-			text = text.replace("[stupid]", "")
-			text = stupify(text)
-			effectiveSpeed -= .3
+
+		var res = TextWarper.checkTag(text, effectiveSpeed)
+
+		text = res[0]
+		effectiveSpeed= res[1]
 
 		typeOut(text, effectiveSpeed)
 
@@ -117,54 +118,3 @@ func is_dialogue_playing() -> bool:
 func is_dialogue_visible() -> bool:
 	return isTyping or richtextlabel.visible_characters > 0
 
-
-func stupify(input: String) -> String:
-	var chance = .2
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var text = input
-
-
-	var result = ""
-	var words := text.split(" ")
-
-	for wo in words.size():
-		var word = words[wo]
-		var _ex = ""
-		var in_tag = false
-
-		for i in word.length():
-			var c = word[i]
-
-			if c == "[":
-				in_tag = true
-				_ex += c
-				continue
-			if c == "]":
-				in_tag = false
-				_ex += c
-				continue
-			if in_tag:
-				_ex += c
-				continue
-
-			#stuttering. randomly repeat a letter occasionally
-			if i == 0 and rng.randf() < chance:
-				_ex += c + "-"
-
-			if rng.randf() < chance:
-				c = c.to_upper()
-
-			_ex += c
-
-			# extend vowels
-			if rng.randf() < chance:
-				var extejnd = rng.randi_range(1, 3)
-				if vowls.has(c):
-					_ex += c.repeat(extejnd)
-
-		result += _ex
-		if wo < words.size() - 1:
-			result += " "
-
-	return result
