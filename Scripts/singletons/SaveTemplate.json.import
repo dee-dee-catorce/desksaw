@@ -1,0 +1,13 @@
+[remap]
+
+importer="json_translations_importer"
+type="Translation"
+uid="uid://oelok2mkmaat"
+valid=false
+
+[deps]
+
+source_file="res://Scripts/singletons/SaveTemplate.json"
+
+[params]
+

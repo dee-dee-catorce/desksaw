@@ -3,12 +3,11 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://ctmmid7y5wteb"
-path="res://.godot/imported/speech.ogg-4e671e4bb2a399ce39ccca7340b221c3.oggvorbisstr"
+valid=false
 
 [deps]
 
 source_file="res://assets/sounds/expie/speech.ogg"
-dest_files=["res://.godot/imported/speech.ogg-4e671e4bb2a399ce39ccca7340b221c3.oggvorbisstr"]
 
 [params]
 

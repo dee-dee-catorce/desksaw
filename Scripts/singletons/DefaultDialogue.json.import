@@ -1,0 +1,13 @@
+[remap]
+
+importer="json_translations_importer"
+type="Translation"
+uid="uid://c7jvtu4jnvxfn"
+valid=false
+
+[deps]
+
+source_file="res://Scripts/singletons/DefaultDialogue.json"
+
+[params]
+

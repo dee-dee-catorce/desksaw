@@ -1,7 +1,5 @@
 [gd_resource type="Theme" format=3 uid="uid://cmcg2kh8tp34j"]
 
-[ext_resource type="FontFile" uid="uid://cyu60wqg7ra0c" path="res://assets/fonts/LiberationMono-Regular.ttf" id="1_k462y"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmb15"]
 bg_color = Color(1, 1, 1, 1)
 expand_margin_left = 4.0
@@ -21,7 +19,6 @@ border_color = Color(1, 1, 1, 1)
 corner_detail = 1
 
 [sub_resource type="FontVariation" id="FontVariation_8yqo1"]
-base_font = ExtResource("1_k462y")
 variation_embolden = 0.5
 
 [sub_resource type="DPITexture" id="DPITexture_yiplu"]

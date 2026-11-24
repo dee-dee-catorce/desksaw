@@ -3,12 +3,11 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cyu60wqg7ra0c"
-path="res://.godot/imported/LiberationMono-Regular.ttf-2e5941f3b06735e05787a81fe76c2155.fontdata"
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/LiberationMono-Regular.ttf"
-dest_files=["res://.godot/imported/LiberationMono-Regular.ttf-2e5941f3b06735e05787a81fe76c2155.fontdata"]
 
 [params]
 

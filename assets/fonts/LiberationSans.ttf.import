@@ -3,12 +3,11 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://3iqts0pa6rby"
-path="res://.godot/imported/LiberationSans.ttf-10d1f369cf81fefa2de5a54e79dceac6.fontdata"
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/LiberationSans.ttf"
-dest_files=["res://.godot/imported/LiberationSans.ttf-10d1f369cf81fefa2de5a54e79dceac6.fontdata"]
 
 [params]
 

@@ -32,17 +32,30 @@ func _get_priority():
 	return 1
 
 func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
-	var text = FileAccess.get_file_as_string(source_file)
-	
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(text)
-	var json = test_json_conv.get_data()
-	
+	var file = FileAccess.open(source_file, FileAccess.READ)
+	if file == null:
+		push_error("Cannot open %s: %s" % [source_file, error_string(FileAccess.get_open_error())])
+		return FileAccess.get_open_error()
+
+	var text = file.get_as_text()
+	file.close()
+
+	var parser = JSON.new()
+	var err = parser.parse(text)
+	if err != OK:
+		push_error("JSON parse error in %s line %d: %s" % [source_file, parser.get_error_line(), parser.get_error_message()])
+		return err
+
+	var json = parser.get_data()
+	if typeof(json) != TYPE_DICTIONARY or not json.has("locale") or not json.has("messages"):
+		push_error("%s is not a valid translation JSON (needs 'locale' and 'messages')" % source_file)
+		return ERR_INVALID_DATA
+
 	var translation = Translation.new()
 	translation.locale = json["locale"]
-	
+
 	var messages = json["messages"]
 	for messageKey in messages.keys():
 		translation.add_message(messageKey, messages[messageKey])
-	
+
 	return ResourceSaver.save(translation, "%s.%s" % [save_path, _get_save_extension()])

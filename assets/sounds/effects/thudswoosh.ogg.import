@@ -3,12 +3,11 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://fnscnafspj3j"
-path="res://.godot/imported/thudswoosh.ogg-2e893ffb89f63f2389f1a640b9e954f5.oggvorbisstr"
+valid=false
 
 [deps]
 
 source_file="res://assets/sounds/effects/thudswoosh.ogg"
-dest_files=["res://.godot/imported/thudswoosh.ogg-2e893ffb89f63f2389f1a640b9e954f5.oggvorbisstr"]
 
 [params]
 

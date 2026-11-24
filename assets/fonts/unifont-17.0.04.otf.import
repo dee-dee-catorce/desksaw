@@ -3,12 +3,11 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://8t0viseu527j"
-path="res://.godot/imported/unifont-17.0.04.otf-44f5395e27db99ddd7435974a1769d42.fontdata"
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/unifont-17.0.04.otf"
-dest_files=["res://.godot/imported/unifont-17.0.04.otf-44f5395e27db99ddd7435974a1769d42.fontdata"]
 
 [params]
 

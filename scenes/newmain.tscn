@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://de2e1cyd8inbm" path="res://assets/shaders/pixelp.gdshader" id="4_6uavn"]
 [ext_resource type="PackedScene" uid="uid://kjcmv8a5d6d8" path="res://scenes/ui/terminal.tscn" id="4_8gj0p"]
 [ext_resource type="PackedScene" uid="uid://bn4qfaris1qqr" path="res://scenes/ui/persistencePopup.tscn" id="5_8gj0p"]
-[ext_resource type="PackedScene" uid="uid://bbgdbg120vky0" path="res://scenes/sawianBase.tscn" id="6_rpihv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fn1ne"]
 
@@ -78,7 +77,3 @@ offset_bottom = 349.0
 
 [node name="PersistenceWarningPopup" parent="CanvasLayer2" unique_id=178805227 instance=ExtResource("5_8gj0p")]
 visible = false
-
-[node name="Node2D" parent="." unique_id=2077787481 instance=ExtResource("6_rpihv")]
-position = Vector2(766, 302)
-scale = Vector2(4.206076, 4.206076)

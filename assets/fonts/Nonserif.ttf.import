@@ -3,12 +3,11 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ch25xbuo14hel"
-path="res://.godot/imported/Nonserif.ttf-d59dc012fab63e3b540eba528a1e15af.fontdata"
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/Nonserif.ttf"
-dest_files=["res://.godot/imported/Nonserif.ttf-d59dc012fab63e3b540eba528a1e15af.fontdata"]
 
 [params]
 

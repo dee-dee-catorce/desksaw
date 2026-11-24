@@ -4,11 +4,6 @@ extends Node
 recoding rn nvm
 
 
-
-
-
-
-
 """
 
 #referebces for systems to be used by this script
@@ -566,8 +561,13 @@ func petLimb(limb: RigidBody2D) -> void:
 
 	if sprite:
 		var tween := create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property(sprite, "scale", Vector2(1.07, 0.93), 0.08)
-		tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.25)
+
+
+		var scaleX = sprite.scale.x
+		var scaleY = sprite.scale.y
+		#// hey whoever made this i hate you
+		tween.tween_property(sprite, "scale", Vector2(scaleX * 1.07, scaleY * 0.93), 0.08)
+		tween.tween_property(sprite, "scale", Vector2(scaleX, scaleY), 0.25)
 
 	if not dialogueSys.is_dialogue_playing() and not petO15Flag:
 		dialogueSys.pool = dialogueSys.data.pet
