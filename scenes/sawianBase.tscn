@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://c7ow8pxs33wgv" path="res://Scripts/impo/dragExp.gd" id="17_6mwry"]
 [ext_resource type="Script" uid="uid://cu82jmt2fea41" path="res://Scripts/nimpo/skinmapper.gd" id="17_67p0r"]
 [ext_resource type="Script" uid="uid://bwycbhxscshio" path="res://Scripts/impo/behavior.gd" id="18_8de8m"]
-[ext_resource type="Script" uid="uid://7c5ffi5w6il5" path="res://Scripts/impo/sawianBehaviour/movement_handler.gd" id="18_ry0af"]
+[ext_resource type="Script" uid="uid://7c5ffi5w6il5" path="res://Scripts/impo/movement_handler.gd" id="18_ry0af"]
 [ext_resource type="Script" uid="uid://da7sjmfsmufll" path="res://Scripts/impo/dialogueManager.gd" id="19_xvb24"]
 [ext_resource type="Script" uid="uid://pg0ohwt8ba8h" path="res://Scripts/impo/faceSys.gd" id="20_l2ler"]
 [ext_resource type="Script" uid="uid://jnsq0pscs6et" path="res://Scripts/impo/sleep_manager.gd" id="22_dvaus"]

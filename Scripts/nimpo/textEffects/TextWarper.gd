@@ -1,12 +1,12 @@
 class_name TextWarper
-const  vowls: Array = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"]
+const vowls: Array = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"]
 
 const disfigureTalk: Array[String] = [
-	"B",  "M",      
-	"F", "V",        
-	"T", "P","C","S",
-	"L", "N", "R",     
-	"J", "C", "Q", "X" 
+	"B", "M",
+	"F", "V",
+	"T", "P", "C", "S",
+	"L", "N", "R",
+	"J", "C", "Q", "X"
 ]
 
 const water: Array[String] = [
@@ -14,8 +14,6 @@ const water: Array[String] = [
 	"glub", "igbh", "bloo", "buh", "gib", "bluhh",
 	"ub", "igblu", "bwah", "gluh", "ib", "blub"
 ]
-
-
 
 
 # some of these were just the original stupid tag and i just seperated it into 
@@ -66,7 +64,6 @@ static func checkTag(input: String, speedMod: float) -> Array:
 	return [string, mod]
 
 
-
 static func disFigureSpeech(input: String, chance: float = 0.2) -> String:
 	var transString: String = ""
 	var in_tag: bool = false
@@ -74,8 +71,8 @@ static func disFigureSpeech(input: String, chance: float = 0.2) -> String:
 	rng.randomize()
 
 
-	var poolU: Array[String] = ["A", "E", "I", "O", "U","H","C"]
-	var poolL: Array[String] = ["a", "e", "i", "o", "u","h","c"]
+	var poolU: Array[String] = ["A", "E", "I", "O", "U", "H", "C"]
+	var poolL: Array[String] = ["a", "e", "i", "o", "u", "h", "c"]
 
 	for i in input.length():
 		var c: String = input[i]
@@ -135,7 +132,7 @@ static func stupify(input: String, chance: float = 0.2) -> String:
 				continue
 
 			#stuttering. randomly repeat a letter occasionally
-			if i == 0 and rng.randf() < chance*2:
+			if i == 0 and rng.randf() < chance:
 				_ex += c + "-"
 
 			if rng.randf() < chance:

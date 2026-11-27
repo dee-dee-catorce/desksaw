@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bbgdbg120vky0"]
+[gd_scene format=3 uid="uid://d2w550xnppbra"]
 
 [ext_resource type="Script" uid="uid://unwhnooi7g2c" path="res://addons/godot-rapier2d/custom_nodes/rapier_rigid_body_2d.gd" id="1_lwxlu"]
 [ext_resource type="Script" uid="uid://bv2bc4lt5v7hu" path="res://addons/godot-rapier2d/custom_nodes/rapier_pin_joint_2d.gd" id="2_0cbmn"]

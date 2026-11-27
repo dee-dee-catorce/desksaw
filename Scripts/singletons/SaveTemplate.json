@@ -8,14 +8,61 @@
 		"health": 100.0,
 		"trust": 10.0,
 		"tired": 0.0,
-		
-		
 		"bodyCondition": {
-			"head":
-			{
+			"head": {
 				"condition": 100,
 				"isBroken": false,
-				"isAmputated"
+				"isAmputated": false
+			},
+			"thorax": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"abdomen": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"leftArm": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"rightArm": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"leftHand": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"rightHand": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"leftLeg": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"rightLeg": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"leftFoot": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
+			},
+			"rightFoot": {
+				"condition": 100,
+				"isBroken": false,
+				"isAmputated": false
 			}
 		},
 		"item": "",
@@ -23,7 +70,7 @@
 		"interactions": false,
 		"isDead": false,
 		"dangerVal": {},
-		"expieSpawnSize":1.0
+		"expieSpawnSize": 1.0
 	},
 	"nextPetId": 1.0,
 	"firstLaunch": true,
