@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if parent:
-		global_position = lerp(global_position, parent.global_position, .1)
+		global_position = lerp(global_position, parent.global_position, .5)
 
 	print(position)
 	pass

@@ -130,18 +130,21 @@ func loadAllTextures():
 			file = entry
 		else:
 			continue
-
-		var tex: Texture2D
+		if entry.ends_with(".JSON"):
+			continue
+		var tex: Resource
 		var user_tex = loadUserTex(userSkinPath + file)
-		if user_tex:
+
+		if user_tex is Texture2D:
 			tex = user_tex
 		else:
 			tex = load(resPath + file)
 
-		if tex:
+		if tex is Texture2D:
 			alltextures.append({
 				"name": file,
 				"texture": tex
 			})
+
 
 	dir.list_dir_end()

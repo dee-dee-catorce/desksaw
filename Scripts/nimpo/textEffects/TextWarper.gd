@@ -52,14 +52,14 @@ static func checkText(input: String) -> bool:
 static func checkTag(input: String, speedMod: float) -> Array:
 	var string: String = input
 	var mod: float = speedMod
-
+#oops
 	if checkText("[stutter]"):
 		string = string.replace("[stutter]", "")
 		string = stupify(string)
 		mod -= 0.3
 	if checkText("[disfigure]"):
 		string = string.replace("[disfigure]", "")
-		string = stupify(string)
+		string = disFigureSpeech(string)
 		mod -= 0.1
 	return [string, mod]
 

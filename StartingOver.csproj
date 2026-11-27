@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.7.2">
+<Project Sdk="Godot.NET.Sdk/4.7.1">
   <PropertyGroup>
     <!-- Separate the target frameworks into strict conditional checks -->
     <TargetFramework Condition=" '$(GodotTargetPlatform)' != 'android' ">net8.0</TargetFramework>

@@ -1,13 +1,3 @@
 [remap]
 
-importer="json_translations_importer"
-type="Translation"
-uid="uid://dwtjjvanhf2b0"
-valid=false
-
-[deps]
-
-source_file="res://Scripts/singletons/config.json"
-
-[params]
-
+importer="keep"

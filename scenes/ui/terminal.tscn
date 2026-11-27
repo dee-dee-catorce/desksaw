@@ -499,7 +499,7 @@ layout_mode = 2
 label = "TERMINAL_FONT_SIZE_TITLE"
 key = "expieDialogueSize"
 sliderMinimum = 3.0
-sliderMaximum = 12.0
+sliderMaximum = 20.0
 sliderStep = 1.0
 valueType = "int"
 
@@ -708,7 +708,7 @@ text = "↻"
 [node name="SkinDB" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/SelectorPanel/VBoxContainer/OptionsMarginContainer/VBoxContainer" unique_id=1962474016]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.13137114, 0.6858215, 0.86762196, 1)
+theme_override_colors/font_color = Color(0.12941177, 0.6862745, 0.8666667, 1)
 text = "TERMINAL_SKIN_DB_TEXT"
 autowrap_mode = 3
 
@@ -771,6 +771,7 @@ text = "TERMINAL_SPAWN_BTN_TEXT"
 
 [node name="CustomDialogue" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=930041412]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.12941177, 0.6862745, 0.8666667, 1)
 text = "TERMINAL_CUSTOM_DIALOGUE_BTN_TEXT"
 
 [node name="NextButton" type="Button" parent="MarginContainer/ViewportPanel/SkinsView/MarginContainer/HBoxContainer/DisplayPanel/VBoxContainer/Selector" unique_id=350446503]
