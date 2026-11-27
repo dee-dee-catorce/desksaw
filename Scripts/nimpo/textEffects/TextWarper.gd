@@ -42,8 +42,8 @@ static func manualTransform(input: String, type: String, chance: float = 0.2) ->
 	return modInput
 
 
-static func checkText(input: String) -> bool:
-	if input.find(input) != -1:
+static func checkText(input: String,  tag: String) -> bool:
+	if input.find(tag) != -1:
 		return true
 	else:
 		return false
@@ -53,11 +53,11 @@ static func checkTag(input: String, speedMod: float) -> Array:
 	var string: String = input
 	var mod: float = speedMod
 #oops
-	if checkText("[stutter]"):
+	if checkText(input, "[stutter]"):
 		string = string.replace("[stutter]", "")
 		string = stupify(string)
 		mod -= 0.3
-	if checkText("[disfigure]"):
+	if checkText(input, "[disfigure]"):
 		string = string.replace("[disfigure]", "")
 		string = disFigureSpeech(string)
 		mod -= 0.1

@@ -14,7 +14,7 @@
 		"TERMINAL_INVICIBLE_TITLE": "Invincible\n[i]Prevents death, mood loss, hunger, trust loss...[/i]",
 		"TERMINAL_LOBOTOMY_TITLE": "Enable mood",
 		"TERMINAL_HUNGRY_TITLE": "Enable hunger",
-		"TERMINAL_YAPPING_TITLE": "Enable yapping",
+		"TERMINAL_YAPPING_TITLE": "[wave][color=red]Early[/color][/wave] Enable conversations between characters.",
 		"TERMINAL_SLEEPY_TITLE": "Enable sleep cycles",
 		"TERMINAL_CUSTOM_DIALOGUE_BTN_TEXT": "Create custom dialogue set for character",
 		"TERMINAL_SILENCE_TITLE": "Disable ALL speech",
