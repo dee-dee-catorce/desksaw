@@ -1,5 +1,8 @@
 extends Node2D
 
+
+## before anyone wastes their time here this has nothing to do with sawian logic
+#you are looking for behaviour.gd or sawianBase.tscn
 @onready
 var settings = gbData.settings
 

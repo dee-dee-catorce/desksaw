@@ -214,6 +214,9 @@ func _limitArms(delta: float) -> void:
 
 ## CU HandleVisuals: lean, crouch, picture lag, torso towards the look, hanging arms, head keeps the look.
 func _applyBody(delta: float, st: float) -> void:
+
+
+
 	var ms = moveSys
 	var k := _k(st)
 	# fade out (CU: visualBodyOffset - dt * 8, crouchAmount - dt * 6)
@@ -230,6 +233,9 @@ func _applyBody(delta: float, st: float) -> void:
 	var resting: bool = ms.currstate == ms.states.resting
 	# hip base - what the animation set (if nobody touched it since our last write - the old base,
 	# otherwise our changes would pile up after the animation ends)
+
+
+
 	if _hip.position.distance_squared_to(_hipWrittenPos) > 1e-8:
 		_hipBasePos = _hip.position
 	if absf(_hip.rotation - _hipWrittenRot) > 1e-6:
@@ -271,6 +277,8 @@ func _applyBody(delta: float, st: float) -> void:
 			var a1 := (skInv * fb1.global_transform).get_rotation()
 			_footFlat[i] = a1 if float(_footFlat[i]) == INF else lerp_angle(float(_footFlat[i]), a1, clampf(delta * 2.0, 0.0, 1.0))
 	# 2) crouch (hip lower, feet stay) and the picture lag (the whole picture)
+
+
 	var cWant := float(ms.crouch)
 	_crouchShown = move_toward(_crouchShown, cWant, CROUCH_IN_SPEED * delta) if cWant > _crouchShown else cWant
 	var crouchPx: float = 0.0 if resting else (_crouchShown + absf(float(ms.lean)) * LEAN_DIP) * k
@@ -292,6 +300,8 @@ func _applyBody(delta: float, st: float) -> void:
 			var dx: float = w0.x - hp.x
 			var room: float = (w0.y - hp.y) - sqrt(maxf(minD * minD - dx * dx, 0.0))
 			crouchPx = minf(crouchPx, maxf(room, 0.0))
+
+
 	_hip.position = _hipBasePos + skInv.basis_xform(off + Vector2(0.0, crouchPx))
 	if crouchPx > 0.01:
 		for i in _ikLegs.size():
@@ -309,6 +319,8 @@ func _applyBody(delta: float, st: float) -> void:
 				var a2 := (skInv * fb2.global_transform).get_rotation()
 				fb2.rotation += wrapf(flat - a2, -PI, PI) * wt
 				_footWritten[i] = fb2.rotation
+
+
 	_hipWrittenPos = _hip.position
 	_hipWrittenRot = _hip.rotation
 	# 3) torso (the animation doesn't touch the back bone)
@@ -326,6 +338,8 @@ func _applyBody(delta: float, st: float) -> void:
 		ik._process_loop(0.0)
 		tgt.position = keep
 	# 5) the head keeps its look
+
+	
 	if _lookAt != null:
 		_lookAt._process_loop(0.0)
 

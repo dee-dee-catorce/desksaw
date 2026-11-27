@@ -114,6 +114,7 @@ locale/translation_add_builtin_strings_to_pot=true
 2d/run_on_separate_thread=true
 2d/physics_engine="Rapier2D"
 3d/physics_engine="Jolt Physics"
+2d/default_gravity=1400.0
 2d/time_before_sleep=0.31
 2d/solver/solver_iterations=10
 

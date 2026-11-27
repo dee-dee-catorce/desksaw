@@ -23,7 +23,7 @@ func _ready() -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ywsh"]
 shader = ExtResource("4_6uavn")
-shader_parameter/pixelation = 0.0030000001425
+shader_parameter/pixelation = 0.002000000095
 shader_parameter/opacity = 1.0
 
 [node name="newmain" type="Node2D" unique_id=827416073 node_paths=PackedStringArray("console")]
@@ -63,6 +63,8 @@ material = SubResource("ShaderMaterial_1ywsh")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 22.0
+offset_right = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

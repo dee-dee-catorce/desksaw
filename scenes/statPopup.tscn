@@ -29,7 +29,6 @@ grow_vertical = 2
 alignment = 1
 
 [node name="stat" type="RichTextLabel" parent="ItemList" unique_id=600548670]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_yx70c")
 theme_override_font_sizes/normal_font_size = 4

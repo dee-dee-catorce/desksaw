@@ -465,7 +465,7 @@ func wandering() -> void:
 	while get_tree():
 		if wander:
 			var restChance = randi_range(1, 22)
-
+			await get_tree().create_timer(1).timeout
 			if restChance == 1: moveSys.initswithc(moveSys.states.resting)
 
 			await get_tree().create_timer(randi_range(4, 8)).timeout
@@ -533,7 +533,7 @@ func petLimb(limb: RigidBody2D) -> void:
 	moodSys._tempVal(5.0, 13)
 	pet_timer.start(pet_timer_inc)
 	pet_count += 1
-
+	"""
 	if pet_count >= 30 and not pet_timer.is_stopped():
 		petO15Flag = false
 		petRagdoll()
@@ -549,6 +549,7 @@ func petLimb(limb: RigidBody2D) -> void:
 	else:
 		currentEmotion = emotionz.happy
 		faceSys.setEmotion("happy")
+	"""
 
 	#we can't tween the actual rigid body, its position doesn't update while tweening
 	var sprite := limb.get_node_or_null("Sprite2D") as CanvasItem
@@ -563,8 +564,8 @@ func petLimb(limb: RigidBody2D) -> void:
 		var tween := create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 
-		var scaleX = sprite.scale.x
-		var scaleY = sprite.scale.y
+		var scaleX = 4.0
+		var scaleY = 4.0
 		#// hey whoever made this i hate you
 		tween.tween_property(sprite, "scale", Vector2(scaleX * 1.07, scaleY * 0.93), 0.08)
 		tween.tween_property(sprite, "scale", Vector2(scaleX, scaleY), 0.25)

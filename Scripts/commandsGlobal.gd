@@ -61,7 +61,9 @@ func spawnExpie(petId: String = ""):
 	instance.get_node("behavior/statWatcher").window = statInstance.get_node("statMenu")
 	statInstance.parent = instance.get_node("RigidBodies/Head")
 	var wrapper = Node2D.new()
-	wrapper.scale = Vector2(4.0, 4.0)
+
+	#fuck you
+	wrapper.scale = Vector2(1, 1)
 	
 	#Update scale based on saved info or spawn setting
 	if gbData.data["saw"][petId].has("spawnSize"):

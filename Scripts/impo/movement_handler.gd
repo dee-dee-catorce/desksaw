@@ -21,11 +21,14 @@ extends Node
 
 @export var defheadnose: Node2D
 
-@export var ragdollspeed: float = 575.0
+@export var ragdollspeed: float = 2075.0
 
 @export var pinNode: Node2D
 
 signal sigragdoll()
+
+#debugging
+var isControlled = false
 
 var lookback = false
 var flip = false
@@ -366,7 +369,7 @@ func _sizeK() -> float:
 	var root := get_parent().get_parent() as Node2D
 	if root == null:
 		return 1.0
-	return maxf(absf(root.global_scale.y) / 4.0, 0.05)
+	return maxf(absf(root.global_scale.y) / 1.25, 0.05)
 
 
 ## Smooth movement: speed up, slow down and keep the walking speed limit by changing the velocity directly.
@@ -454,7 +457,7 @@ func _stepUp() -> void:
 	var stepH: float = bottom - float(top["position"].y)
 	if stepH < 2.0 or stepH > maxStep:
 		return
-	var move := Vector2(dir * maxf(0.0, (hp.x - center.x) * dir - halfW), -(stepH + 2.0))
+	var move := Vector2(dir * maxf(0.0, (hp.x - center.x) * dir - halfW), - (stepH + 2.0))
 	rigid.global_position += move
 	visualOffset -= move # the picture stays where it was and catches up (LiveBody)
 	rigid.linear_velocity.x = _lastVel.x
